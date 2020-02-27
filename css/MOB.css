@@ -1,0 +1,152 @@
+@media screen and (max-width:576px) {
+    body {
+        font-size: 14px;
+    }
+
+    h1 {
+        margin-bottom: 15%;
+    }
+
+    p {
+        text-align: justify;
+        margin: 10% 0 10% 0;
+    }
+
+    .form-group {
+        margin: auto;
+    }
+    form {
+       width: fit-content;
+        margin:auto;
+        height: 40%;
+
+    }
+    fieldset
+    {
+        margin-top: 20%;
+        margin-bottom: 15%;
+        padding: 2rem;
+    }
+    #co {
+        margin-top: 2%;
+    }
+
+    label {
+        width: 6rem;
+    }
+
+    .row {
+        justify-content: center;
+    }
+
+    #robot {
+        margin-top: auto;
+        margin-bottom: auto;
+    }
+
+    legend {
+        margin-bottom: 4%;
+        text-align: center;
+        color: lightyellow; /* Sur IE la légende est en noir par défaut*/
+    }
+
+    #logo {
+        width: 11rem;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 10%;
+    }
+
+    #article {
+        position: relative;
+    }
+
+    #article_description {
+        position: absolute;
+        bottom: 0;
+        border-radius: 0 0 2px 2px;
+        width: 100%;
+        height: 20%;
+        padding-top: 15px;
+        background-color: rgba(24, 24, 24, 0.8);
+        color: white;
+        text-align: center;
+        margin: auto;
+        font-size: 1em;
+    }
+    #article_diapo
+    {
+        position: relative;
+    }
+    .label {
+        display: flex;
+        text-align: center;
+        margin-bottom: 0;
+    }
+
+    .check {
+        display: flex;
+        justify-content: space-around;
+    }
+
+    .decimal {
+        width: 3.5rem;
+        height: 1.5rem;
+    }
+
+    .ligne-decimal {
+        text-align: center;
+        margin-bottom: 0.5rem;
+        margin-top: 0.5rem;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.125);
+    }
+
+    .msgChat {
+        margin-bottom: 4%;
+        margin-top: 0;
+        padding: 0.5%;
+        border-radius: 3px;
+    }
+
+    #msg {
+    width: 70%;
+        text-align: center;
+    }
+    #formChat
+    {
+        margin-bottom: 4%;
+        display: inline;
+    }
+    .fin
+    {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    .reconnection
+    {
+        margin-bottom: 15%;
+    }
+    .liste-article
+    {
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .articleBtn
+    {
+        display: flex;
+        flex-direction: column;
+    }
+    .d_none
+    {
+        display: none;
+    }
+    #formulaire
+    {
+        width: fit-content;
+        margin: auto;
+    }
+}
+

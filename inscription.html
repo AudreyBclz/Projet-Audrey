@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no">
+    <link href="css/Bootstrap/bootstrap.css" rel="stylesheet"/>
+    <link href="css/normalisation.css" rel="stylesheet"/>
+    <link href="css/PC.css" rel="stylesheet"/>
+    <link href="css/Tablette.css" rel="stylesheet"/>
+    <link href="css/MOB.css" rel="stylesheet"/>
+
+
+
+
+
+    <title>Les Pronos Stickers!!</title>
+</head>
+<body>
+<header>
+    <h1 class="col-sm-12"> Bienvenue chez les Pronos Stickers!</h1>
+    <p class="col-sm-12 text-justify mb-5">Ici Vous trouverez des gens sympas et passionnés qui vous permettront de partager des bons moments et des bons tuyaux niveau pronostic :) </p>
+</header>
+<main>
+    <div id="formulaire">
+        <form class="col-lg-4">
+        <fieldset class="bg-dark">
+            <div class="form-group">
+                <legend>Rejoins nous on est bien!</legend>
+                <div class="row">
+                    <label for="pseudo" class="col-form-label-sm">Pseudo </label>
+                    <input type="text" id="pseudo" class="form-control-sm" name="pseudo"/><br/>
+                </div>
+                <div class="row">
+                    <label for="email" class="col-form-label-sm">Adresse mail</label>
+                    <input type="email"id="email" class="form-control-sm" name="mail"><br/>
+                </div>
+                <div class="row">
+                    <label for="conf_email" class="col-form-label-sm">Confirmer mail</label>
+                    <input type="email"id="conf_email" class="form-control-sm" name="conf_mail"><br/>
+                </div>
+                <div class="row">
+                    <label for="MdP" class="col-form-label-sm"> Mot de passe</label>
+                    <input type="password" id="MdP" class="form-control-sm" name="pass"/><br/>
+                </div>
+                <div class="row">
+                    <label for="conf_MdP" class="col-form-label-sm"> Confirmation mot de passe</label>
+                    <input type="password" id="conf_MdP" class="form-control-sm" name="pass"/><br/>
+                </div>
+                <div class="row">
+                    <label for="robot" class="col-form-label-sm">Je ne suis pas un robot</label>
+                    <input type="checkbox" id="robot" value="notRobot"/><br/>
+                </div>
+                <div class="row">
+                    <input type="submit" value="Inscription" id="inscription" class="btn-danger"/>
+                </div>
+            </div>
+        </fieldset>
+    </form>
+        <form class="col-lg-4 d_none">
+            <fieldset class="bg-dark">
+                <div class="form-group">
+                    <legend>Pour vous connecter c'est par ici!</legend>
+                    <div class="row">
+                        <label for="pseudo_co" class="col-form-label-sm">Pseudo </label>
+                        <input type="text" id="pseudo_co" class="form-control-sm"/><br/>
+                    </div>
+                    <div class="row">
+                        <label for="MdP_co" class="col-form-label-sm"> Mot de passe</label>
+                        <input type="password" id="MdP_co" class="pass form-control-sm"/><br/>
+                    </div>
+                    <div class="row">
+                        <input type="submit" value="Connexion" id="connect" class="btn-danger"/>
+                    </div>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+    <img src="img/logo.png" id="logo"/>
+</main>
+<script src="js/Bootstrap/bootstrap.js" rel="script"></script>
+<script src="js/JQuery.js" rel="script"></script>
+<script src="js/popper.min.js" rel="script"></script>
+</body>
+</html>

@@ -1,0 +1,59 @@
+@font-face
+{
+    font-family: 'xolonium';
+    src:url('../font/Xolonium-Regular.otf') format('truetype'),
+        url("../font/Xolonium-Regular.svg") format('svg'),
+        url("../font/Xolonium-Regular.woff") format("woff");
+
+    font-weight: normal;
+
+    font-style:normal;
+}
+body
+{
+    background-image:url("../img/background_grand.jpg");
+    color:lightyellow;
+    margin:2%;
+}
+h1
+{
+    text-align: center;
+    font-family: "xolonium",sans-serif;
+    font-size: 25px;
+}
+.bg-dark-red
+{
+background-color:darkred;
+}
+.navbar
+{
+    margin-bottom: 5%;
+    border-radius: 3px;
+}
+nav
+{
+    color: white;
+    font-weight: bold;
+}
+textarea
+{
+    width:100%;
+}
+#zoneChat
+{
+    height: 75%;
+}
+.w-40
+{
+    width: 40%;
+}
+.arrondi
+{
+    border-radius: 1px;
+}
+.w-90-center
+{
+    width: 90%;
+    margin: auto;
+}
+
