@@ -1,7 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="2de8f598-563a-4ce0-b307-48c39b908f48" name="Default Changelist" comment="" />
+    <list default="true" id="2de8f598-563a-4ce0-b307-48c39b908f48" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin_cote.html" beforeDir="false" afterPath="$PROJECT_DIR$/admin_cote.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin_gestionArticle.html" beforeDir="false" afterPath="$PROJECT_DIR$/admin_gestionArticle.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin_moderation_chat.html" beforeDir="false" afterPath="$PROJECT_DIR$/admin_moderation_chat.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin_resultat.html" beforeDir="false" afterPath="$PROJECT_DIR$/admin_resultat.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/article.html" beforeDir="false" afterPath="$PROJECT_DIR$/article.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/chat.html" beforeDir="false" afterPath="$PROJECT_DIR$/chat.html" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -22,6 +30,11 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="1XehXIRNIml10hqcgsokV0DGxUo" />
@@ -35,7 +48,7 @@
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../HTML_CSS/CSS3/exopicturebox/picture-modif.html" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../JAVASCRIPT/exo/exo8-passage-info" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
@@ -110,10 +123,10 @@
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
     <state x="2655" y="324" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1581429310945" />
-    <state x="2660" y="276" key="FileChooserDialogImpl" timestamp="1582529245095">
+    <state x="2660" y="276" key="FileChooserDialogImpl" timestamp="1582875852346">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
-    <state x="2660" y="276" key="FileChooserDialogImpl/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1582529245095" />
+    <state x="2660" y="276" key="FileChooserDialogImpl/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1582875852346" />
     <state x="277" y="56" key="SettingsEditor" timestamp="1581512825912">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
