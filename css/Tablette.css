@@ -83,6 +83,10 @@
         display: inline;
         margin-bottom: 30%;
     }
+    #zoneChat
+    {
+        margin: auto;
+    }
     #msg {
         width: 70%;
         text-align: center;
