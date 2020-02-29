@@ -212,4 +212,13 @@
     {
         display: none;
     }
+    .articleBtn
+    {
+        display: flex;
+        flex-direction: column;
+    }
+    #gestion_article
+    {
+        display: flex;
+    }
 }
