@@ -47,9 +47,10 @@
     <h1>Pronostic de la semaine</h1>
     </header>
     <main>
-        <div id="prono-cote" class=>
+        <div id="prono-cote">
             <form class="col-lg-5 prono-pc" id="formulaire">
-                <fieldset class="bg-dark pad-0">
+                <div>
+                    <fieldset class="bg-dark pad-0">
                     <div class="form-group bg-dark">
                         <legend class="text-center">Match 1</legend>
                         <div class="row label text-center justify-content-between">
@@ -67,6 +68,8 @@
                             <input type="text" name="mount1" class="form-control-sm decimal"/>
                         </div>
                     </div>
+                    </fieldset>
+                    <fieldset class="bg-dark pad-0">
                     <div class="form-group bg-dark">
                         <legend class="text-center">Match 2</legend>
                         <div class="row label justify-content-between">
@@ -84,6 +87,8 @@
                             <input type="text" name="mount2" class="form-control-sm decimal"/>
                         </div>
                     </div>
+                    </fieldset>
+                    <fieldset class="bg-dark pad-0">
                     <div class="form-group bg-dark">
                         <legend class="text-center">Match 3</legend>
                         <div class="row label justify-content-between">
@@ -102,6 +107,8 @@
                             <input type="text" name="mount3" class="form-control-sm decimal"/>
                         </div>
                     </div>
+                    </fieldset>
+                        <fieldset class="bg-dark pad-0">
                     <div class="form-group bg-dark">
                         <legend class="text-center">Match 4</legend>
                         <div class="row label justify-content-between">
@@ -119,6 +126,8 @@
                             <input type="text" name="mount4" class="form-control-sm decimal"/>
                         </div>
                     </div>
+                        </fieldset>
+                    <fieldset class="bg-dark pad-0">
                     <div class="form-group bg-dark">
                         <legend class="text-center">Match 5</legend>
                         <div class="row label justify-content-between">
@@ -136,6 +145,8 @@
                             <input type="text" name="mount5" class="form-control-sm decimal"/>
                         </div>
                     </div>
+                    </fieldset>
+                    <fieldset class="bg-dark pad-0">
                     <div class="form-group bg-dark">
                         <legend class="text-center">Match 6</legend>
                         <div class="row label justify-content-between">
@@ -153,6 +164,8 @@
                             <input type="text" name="mount6" class="form-control-sm decimal"/>
                         </div>
                     </div>
+                    </fieldset>
+                    <fieldset class="bg-dark pad-0">
                     <div class="form-group bg-dark">
                         <legend class="text-center">Match 7</legend>
                         <div class="row label justify-content-between">
@@ -170,6 +183,8 @@
                             <input type="text" name="mount7" class="form-control-sm decimal"/>
                         </div>
                     </div>
+                    </fieldset>
+                    <fieldset class="bg-dark pad-0">
                     <div class="form-group bg-dark">
                         <legend class="text-center">Match 8</legend>
                         <div class="row label justify-content-between">
@@ -187,6 +202,8 @@
                             <input type="text" name="mount8" class="form-control-sm decimal"/>
                         </div>
                     </div>
+                    </fieldset>
+                    <fieldset class="bg-dark pad-0">
                     <div class="form-group bg-dark">
                         <legend class="text-center">Match 9</legend>
                         <div class="row label justify-content-between">
@@ -204,6 +221,8 @@
                             <input type="text" name="mount9" class="form-control-sm decimal"/>
                         </div>
                     </div>
+                    </fieldset>
+                    <fieldset class="bg-dark pad-0">
                     <div class="form-group bg-dark">
                         <legend class="text-center">Match 10</legend>
                         <div class="row label justify-content-between">
@@ -221,14 +240,15 @@
                             <input type="text" name="mount10" class="form-control-sm decimal"/>
                         </div>
                     </div>
-                    <div class="row justify-content-sm-center">
-                        <input type="submit" value="Parier" name="envoi" class="btn-danger"/>
+                    </fieldset>
+                    <div class="row justify-content-sm-center w-100">
+                        <input type="submit" value="Parier" name="envoi" class="btn-danger w-50"/>
                     </div>
-                </fieldset>
+                </div>
             </form>
-            <form class="col-lg-5 d_none">
+            <form class="col-lg-5 d_none prono-pc">
                 <fieldset class="bg-dark">
-                    <div class="form-group border-bottom">
+                    <div class="form-group">
                         <legend class="pt-1">Match 1</legend>
                         <div class="row label justify-content-around">
                             <input type="text" placeholder="Equipe 1" class="m-1  text-center form-control-sm w-40"/>
@@ -243,7 +263,9 @@
                             <input type="text" class="form-control-sm decimal_tab decimal w-25"/>
                         </div>
                     </div>
-                    <div class="form-group border-bottom">
+                </fieldset>
+                <fieldset class="bg-dark">
+                    <div class="form-group">
                         <legend class="pt-2">Match 2</legend>
                         <div class="row label justify-content-around">
                             <input type="text" placeholder="Equipe 1" class="m-1 text-center form-control-sm w-40"/>
@@ -258,7 +280,9 @@
                             <input type="text" class="form-control-sm decimal_tab decimal w-25"/>
                         </div>
                     </div>
-                    <div class="form-group border-bottom">
+                </fieldset>
+                <fieldset class="bg-dark">
+                    <div class="form-group">
                         <legend class="pt-3">Match 3</legend>
                         <div class="row label justify-content-around">
                             <input type="text" placeholder="Equipe 1" class="m-1 text-center form-control-sm w-40"/>
@@ -273,7 +297,9 @@
                             <input type="text" class="form-control-sm decimal_tab decimal w-25"/>
                         </div>
                     </div>
-                    <div class="form-group border-bottom">
+                </fieldset>
+                <fieldset class="bg-dark">
+                    <div class="form-group">
                         <legend class="pt-3">Match 4</legend>
                         <div class="row label justify-content-around">
                             <input type="text" placeholder="Equipe 1" class="m-1 text-center form-control-sm w-40"/>
@@ -288,7 +314,9 @@
                             <input type="text" class="form-control-sm decimal_tab decimal w-25"/>
                         </div>
                     </div>
-                    <div class="form-group border-bottom">
+                </fieldset>
+                <fieldset class="bg-dark">
+                    <div class="form-group">
                         <legend class="pt-3">Match 5</legend>
                         <div class="row label justify-content-around">
                             <input type="text" placeholder="Equipe 1" class="m-1 text-center form-control-sm w-40"/>
@@ -303,7 +331,9 @@
                             <input type="text" class="form-control-sm decimal_tab decimal w-25"/>
                         </div>
                     </div>
-                    <div class="form-group border-bottom">
+                </fieldset>
+                <fieldset class="bg-dark">
+                    <div class="form-group">
                         <legend class="pt-3">Match 6</legend>
                         <div class="row label justify-content-around">
                             <input type="text" placeholder="Equipe 1" class="m-1 text-center form-control-sm w-40"/>
@@ -318,7 +348,9 @@
                             <input type="text" class="form-control-sm decimal_tab decimal w-25"/>
                         </div>
                     </div>
-                    <div class="form-group border-bottom">
+                </fieldset>
+                <fieldset class="bg-dark">
+                    <div class="form-group">
                         <legend class="pt-3">Match 7</legend>
                         <div class="row label justify-content-around">
                             <input type="text" placeholder="Equipe 1" class="m-1 text-center form-control-sm w-40"/>
@@ -333,7 +365,9 @@
                             <input type="text" class="form-control-sm decimal_tab decimal w-25"/>
                         </div>
                     </div>
-                    <div class="form-group border-bottom">
+                </fieldset>
+                <fieldset class="bg-dark">
+                    <div class="form-group">
                         <legend class="pt-3">Match 8</legend>
                         <div class="row label justify-content-around">
                             <input type="text" placeholder="Equipe 1" class="m-1 text-center form-control-sm w-40"/>
@@ -348,7 +382,9 @@
                             <input type="text" class="form-control-sm decimal_tab decimal w-25"/>
                         </div>
                     </div>
-                    <div class="form-group border-bottom">
+                </fieldset>
+                <fieldset class="bg-dark">
+                    <div class="form-group">
                         <legend class="pt-3">Match 9</legend>
                         <div class="row label justify-content-around">
                             <input type="text" placeholder="Equipe 1" class="m-1 text-center form-control-sm w-40"/>
@@ -363,7 +399,9 @@
                             <input type="text" class="form-control-sm decimal_tab decimal w-25"/>
                         </div>
                     </div>
-                    <div class="form-group border-bottom">
+                </fieldset>
+                <fieldset class="bg-dark">
+                    <div class="form-group">
                         <legend class="pt-3">Match 10</legend>
                         <div class="row label justify-content-around">
                             <input type="text" placeholder="Equipe 1" class="m-1 text-center form-control-sm w-40"/>
@@ -378,11 +416,10 @@
                             <input type="text" class="form-control-sm decimal_tab decimal w-25"/>
                         </div>
                     </div>
-
-                    <div class="row mt-3 justify-content-sm-center">
-                        <input type="submit" value="Envoyer" name="envoi" class="btn-danger"/>
-                    </div>
                 </fieldset>
+                    <div class="row mt-3 justify-content-sm-center w-100">
+                        <input type="submit" value="Envoyer" name="envoi" class="btn-danger w-50"/>
+                    </div>
             </form>
         </div>
     </main>
@@ -391,4 +428,4 @@
     <script type="text/javascript" src="js/jquery-3.4.1.js"></script>
     <script type="text/javascript" src="js/Bootstrap/bootstrap.js"></script>
 </body>
-</html>
+</html> 
