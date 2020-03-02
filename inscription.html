@@ -22,36 +22,36 @@
 </header>
 <main>
     <div id="formulaire">
-        <form class="col-lg-4">
+        <form class="col-lg-4" id="form_inscription" method="post" target="form_inscription.php">
         <fieldset class="bg-dark">
             <div class="form-group">
                 <legend>Rejoins nous on est bien!</legend>
                 <div class="row">
                     <label for="pseudo" class="col-form-label-sm">Pseudo </label>
-                    <input type="text" id="pseudo" class="form-control-sm" name="pseudo"/><br/>
+                    <input type="text" id="pseudo" class="form-control-sm" name="pseudo" required="required"/><br/>
                 </div>
                 <div class="row">
                     <label for="email" class="col-form-label-sm">Adresse mail</label>
-                    <input type="email"id="email" class="form-control-sm" name="mail"><br/>
+                    <input type="email"id="email" class="form-control-sm" name="mail" required="required"><br/>
                 </div>
                 <div class="row">
                     <label for="conf_email" class="col-form-label-sm">Confirmer mail</label>
-                    <input type="email"id="conf_email" class="form-control-sm" name="conf_mail"><br/>
+                    <input type="email"id="conf_email" class="form-control-sm" name="conf_mail" required="required"><br/>
                 </div>
                 <div class="row">
                     <label for="MdP" class="col-form-label-sm"> Mot de passe</label>
-                    <input type="password" id="MdP" class="form-control-sm" name="pass"/><br/>
+                    <input type="password" id="MdP" class="form-control-sm" name="pass" required="required"/><br/>
                 </div>
                 <div class="row">
                     <label for="conf_MdP" class="col-form-label-sm"> Confirmation mot de passe</label>
-                    <input type="password" id="conf_MdP" class="form-control-sm" name="pass"/><br/>
+                    <input type="password" id="conf_MdP" class="form-control-sm" name="conf_pass" required="required"/><br/>
                 </div>
                 <div class="row">
                     <label for="robot" class="col-form-label-sm">Je ne suis pas un robot</label>
-                    <input type="checkbox" id="robot" value="notRobot"/><br/>
+                    <input type="checkbox" id="robot" value="notRobot" required="required"/><br/>
                 </div>
                 <div class="row">
-                    <input type="submit" value="Inscription" id="inscription" class="btn-danger"/>
+                    <input type="button" value="Inscription" id="inscription" class="btn-danger" name="inscription"/>
                 </div>
             </div>
         </fieldset>
@@ -77,6 +77,8 @@
     </div>
     <img src="img/logo.png" id="logo"/>
 </main>
+
+<script src="js/controle_form.js"></script>
 <script src="js/Bootstrap/bootstrap.js" rel="script"></script>
 <script src="js/JQuery.js" rel="script"></script>
 <script src="js/popper.min.js" rel="script"></script>
