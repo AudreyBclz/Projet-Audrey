@@ -6,3 +6,6 @@ catch (Exception $e)
 {
     die('Erreur: '.$e->getMessage());
 }
+$notListed=true;
+$reponse=$bdd->query('SELECT pseudo,mail FROM member_list');
+?>
