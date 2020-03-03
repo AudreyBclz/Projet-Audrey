@@ -13,6 +13,11 @@ function controle_inscription()
         alert("Erreur lors de la confirmation du mail");
         testForm=false;
     }
+    else if (mdp.length<6)
+    {
+        alert("Mot de passe trop court, il faut 6 caractères minimum");
+        testForm=false;
+    }
     if( mdp !== conf_mdp)
     {
         alert("Erreur lors de la confirmation du mot de passe");
