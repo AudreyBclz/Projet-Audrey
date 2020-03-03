@@ -36,17 +36,17 @@
         </div>
         <div id="connexion">
             <p> Pour vous inscrire <a href="inscription.html">cliquer ici</a></p>
-            <form>
+            <form method="post" action="form_connexion.php">
                 <fieldset class="bg-dark">
                 <div class="form-group">
                     <legend>Pour vous connecter c'est par ici!</legend>
-                    <div class="row">
+                    <div class="row justify-content-center">
                         <label for="pseudo" class="col-form-label-sm">Pseudo </label>
-                        <input type="text" id="pseudo" class="form-control-sm" name="pseudo"/><br/>
+                        <input type="text" id="pseudo" class="form-control-sm" name="pseudo" required="required"/><br/>
                     </div>
-                    <div class="row">
+                    <div class="row justify-content-center">
                         <label for="MdP" class="col-form-label-sm"> Mot de passe</label>
-                        <input type="password" id="MdP" class="pass form-control-sm" name="MdP"/><br/>
+                        <input type="password" id="MdP" class="pass form-control-sm" name="MdP" required="required"/><br/>
                     </div>
                     <div class="row">
                         <input type="submit" value="Connexion" id="co" class="btn-danger" name="connexion"/>
