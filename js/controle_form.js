@@ -25,7 +25,6 @@ function controle_inscription()
     }
     if (testForm)
     {
-        alert("Inscription réussie");
         document.getElementById("form_inscription").submit();
     }
 }

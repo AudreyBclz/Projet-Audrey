@@ -1,9 +1,3 @@
-<!DOCTYPE>
-<html>
-    <head>
-        <meta charset="UTF-8"/>
-    </head>
-</html>
 <?php
 try{
     $bdd=new PDO('mysql:host=localhost;dbname=projet-Audrey;charset=utf8','root','',array(PDO::ATTR_ERRMODE=>PDO::ERRMODE_EXCEPTION));
@@ -14,32 +8,118 @@ catch (Exception $e)
 }
 $notListed=true;
 $reponse=$bdd->query('SELECT pseudo,mail FROM member_list');
-while ($donnees=$reponse->fetch())
-{
-    if($donnees['pseudo']==$_POST['pseudo'])
-    {
-        $notListed=false;
-        echo 'Pseudo déjà utilisé, veuillez réessayer.<br/> veuillez réessayer';
+if (isset($_POST['mail']) AND isset($_POST['pseudo']) AND isset($_POST['pass'])) {
+    while ($donnees = $reponse->fetch()) {
+
+        if ($donnees['pseudo'] == $_POST['pseudo']) {
+            $notListed = false;
+            echo '<span class="alert-info">Pseudo déjà utilisé, veuillez réessayer.</span>';
+        } elseif ($donnees['mail'] == $_POST['mail']) {
+            $notListed = false;
+            echo '<span class="alert-info">Email déjà utilisé, veuillez réessayer.</span>';
+        }
     }
-    elseif ($donnees['mail']==$_POST['mail'])
-    {
-        $notListed=false;
-        echo 'Email déjà utilisé, veuillez réessayer.<br/>';
+
+    $reponse->closeCursor();
+    if ($notListed) {
+        $pseudo = $_POST['pseudo'];
+        $mdp = password_hash($_POST['pass'], PASSWORD_DEFAULT);
+        $email = $_POST['mail'];
+        $requete = $bdd->prepare('INSERT INTO member_list(pseudo,mail,password)VALUES(:pseudo,:mail,:password)');
+        $requete->execute(array(
+            'pseudo' => $pseudo,
+            'mail' => $email,
+            'password' => $mdp
+        ));
+        echo '<span class="alert-info">Votre inscription a bien été enregistrée</span>';
+        $requete->closeCursor();
     }
-}
-$reponse->closeCursor();
-if($notListed)
-{
-    $pseudo=$_POST['pseudo'];
-    $mdp=password_hash($_POST['pass'],PASSWORD_DEFAULT);
-    $email=$_POST['mail'];
-    $requete=$bdd->prepare('INSERT INTO member_list(pseudo,mail,password)VALUES(:pseudo,:mail,:password)');
-    $requete->execute(array(
-        'pseudo'=>$pseudo,
-        'mail'=>$email,
-        'password'=>$mdp
-    ));
-    echo'Votre inscription a bien été enregistrée';
-    $requete->closeCursor();
 }
 ?>
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no">
+    <link href="css/Bootstrap/bootstrap.css" rel="stylesheet"/>
+    <link href="css/normalisation.css" rel="stylesheet"/>
+    <link href="css/PC.css" rel="stylesheet"/>
+    <link href="css/Tablette.css" rel="stylesheet"/>
+    <link href="css/MOB.css" rel="stylesheet"/>
+
+
+
+
+
+    <title>Les Pronos Stickers!!</title>
+</head>
+<body>
+<header>
+    <h1 class="col-sm-12"> Bienvenue chez les Pronos Stickers!</h1>
+    <p class="col-sm-12 text-justify mb-5">Ici Vous trouverez des gens sympas et passionnés qui vous permettront de partager des bons moments et des bons tuyaux niveau pronostic :) </p>
+</header>
+<main>
+    <div id="formulaire">
+        <form class="col-lg-4" id="form_inscription" method="post" action="form_inscription.php">
+            <fieldset class="bg-dark">
+                <div class="form-group">
+                    <legend>Rejoins nous on est bien!</legend>
+                    <div class="row justify-content-center">
+                        <label for="pseudo" class="col-form-label-sm">Pseudo </label>
+                        <input type="text" id="pseudo" class="form-control-sm" name="pseudo" required="required"/><br/>
+                    </div>
+                    <div class="row justify-content-center">
+                        <label for="email" class="col-form-label-sm">Adresse mail</label>
+                        <input type="email"id="email" class="form-control-sm" name="mail" required="required"><br/>
+                    </div>
+                    <div class="row justify-content-center">
+                        <label for="conf_email" class="col-form-label-sm">Confirmer mail</label>
+                        <input type="email"id="conf_email" class="form-control-sm" name="conf_mail" required="required"><br/>
+                    </div>
+                    <div class="row justify-content-center">
+                        <label for="MdP" class="col-form-label-sm"> Mot de passe*</label>
+                        <input type="password" id="MdP" class="form-control-sm" name="pass" required="required"/><br/>
+                    </div>
+                    <div class="row justify-content-center">
+                        <label for="conf_MdP" class="col-form-label-sm"> Confirmation mot de passe</label>
+                        <input type="password" id="conf_MdP" class="form-control-sm" name="conf_pass" required="required"/><br/>
+                    </div>
+                    <div class="row justify-content-center">
+                        <label for="robot" class="col-form-label-sm">Je ne suis pas un robot</label>
+                        <input type="checkbox" id="robot" value="notRobot" required="required"/><br/>
+                    </div>
+                    <div class="row justify-content-center">
+                        <input type="button" value="Inscription" id="inscription" class="btn-danger" name="inscription"/>
+                    </div>
+                </div>
+                <p class="font-weight-lighter" id="asterisque">* Votre mot de passe doit contenir 6 caractères minimum</p>
+            </fieldset>
+        </form>
+        <form class="col-lg-4 d_none" method="post" action="form_connexion.php">
+            <fieldset class="bg-dark">
+                <div class="form-group">
+                    <legend>Pour vous connecter c'est par ici!</legend>
+                    <div class="row justify-content-center">
+                        <label for="pseudo_co" class="col-form-label-sm">Pseudo </label>
+                        <input type="text" id="pseudo_co" class="form-control-sm"/><br/>
+                    </div>
+                    <div class="row justify-content-center">
+                        <label for="MdP_co" class="col-form-label-sm"> Mot de passe</label>
+                        <input type="password" id="MdP_co" class="pass form-control-sm"/><br/>
+                    </div>
+                    <div class="row justify-content-center">
+                        <input type="submit" value="Connexion" id="connect" class="btn-danger"/>
+                    </div>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+    <img src="img/logo.png" id="logo"/>
+</main>
+
+<script src="js/controle_form.js"></script>
+<script src="js/Bootstrap/bootstrap.js" rel="script"></script>
+<script src="js/JQuery.js" rel="script"></script>
+<script src="js/popper.min.js" rel="script"></script>
+</body>
+</html>
