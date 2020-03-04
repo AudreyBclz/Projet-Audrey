@@ -1,6 +1,5 @@
 <?php
 session_start();
-$url='inscription.php';
 require('function.php');
 inscription();
 connect();
