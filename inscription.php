@@ -1,4 +1,5 @@
 <?php
+session_start();
 include('dbconnect.php');
 $notListed=true;
 $reponse=$bdd->query('SELECT pseudo,mail FROM member_list');
@@ -25,10 +26,11 @@ if (isset($_POST['mail']) AND isset($_POST['pseudo']) AND isset($_POST['pass']))
             'mail' => $email,
             'password' => $mdp
         ));
-        echo '<span class="alert-info">Votre inscription a bien été enregistrée</span>';
+        echo '<span class="alert-success">Votre inscription a bien été enregistrée</span>';
         $request->closeCursor();
     }
 }
+include('form_connexion.php');
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -95,11 +97,11 @@ if (isset($_POST['mail']) AND isset($_POST['pseudo']) AND isset($_POST['pass']))
                     <legend>Pour vous connecter c'est par ici!</legend>
                     <div class="row justify-content-center">
                         <label for="pseudo_co" class="col-form-label-sm">Pseudo </label>
-                        <input type="text" id="pseudo_co" class="form-control-sm"/><br/>
+                        <input type="text" id="pseudo_co" class="form-control-sm" name="pseudo_co"/><br/>
                     </div>
                     <div class="row justify-content-center">
                         <label for="MdP_co" class="col-form-label-sm"> Mot de passe</label>
-                        <input type="password" id="MdP_co" class="pass form-control-sm"/><br/>
+                        <input type="password" id="MdP_co" class="pass form-control-sm" name="password_co"/><br/>
                     </div>
                     <div class="row justify-content-center">
                         <input type="submit" value="Connexion" id="connect" class="btn-danger"/>
