@@ -1,36 +1,9 @@
 <?php
 session_start();
-include('dbconnect.php');
-$notListed=true;
-$reponse=$bdd->query('SELECT pseudo,mail FROM member_list');
-if (isset($_POST['mail']) AND isset($_POST['pseudo']) AND isset($_POST['pass'])) {
-    while ($donnees = $reponse->fetch()) {
-
-        if ($donnees['pseudo'] == $_POST['pseudo']) {
-            $notListed = false;
-            echo '<span class="alert-info">Pseudo déjà utilisé, veuillez réessayer.</span>';
-        } elseif ($donnees['mail'] == $_POST['mail']) {
-            $notListed = false;
-            echo '<span class="alert-info">Email déjà utilisé, veuillez réessayer.</span>';
-        }
-    }
-
-    $reponse->closeCursor();
-    if ($notListed) {
-        $pseudo = strip_tags($_POST['pseudo']);
-        $mdp = strip_tags(password_hash($_POST['pass'], PASSWORD_DEFAULT));
-        $email = $_POST['mail'];
-        $request = $bdd->prepare('INSERT INTO member_list(pseudo,mail,password)VALUES(:pseudo,:mail,:password)');
-        $request->execute(array(
-            'pseudo' => $pseudo,
-            'mail' => $email,
-            'password' => $mdp
-        ));
-        echo '<span class="alert-success">Votre inscription a bien été enregistrée</span>';
-        $request->closeCursor();
-    }
-}
-include('form_connexion.php');
+$url='inscription.php';
+require('function.php');
+inscription();
+connect();
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -91,7 +64,7 @@ include('form_connexion.php');
                 <p class="font-weight-lighter" id="asterisque">* Votre mot de passe doit contenir 6 caractères minimum</p>
             </fieldset>
         </form>
-        <form class="col-lg-4 d_none" method="post" action="form_connexion.php">
+        <form class="col-lg-4 d_none" method="post" action="inscription.php">
             <fieldset class="bg-dark">
                 <div class="form-group">
                     <legend>Pour vous connecter c'est par ici!</legend>
