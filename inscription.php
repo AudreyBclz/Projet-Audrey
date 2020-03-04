@@ -1,11 +1,5 @@
 <?php
-try{
-    $bdd=new PDO('mysql:host=localhost;dbname=projet-Audrey;charset=utf8','root','',array(PDO::ATTR_ERRMODE=>PDO::ERRMODE_EXCEPTION));
-}
-catch (Exception $e)
-{
-    die('Erreur: '.$e->getMessage());
-}
+include('dbconnect.php');
 $notListed=true;
 $reponse=$bdd->query('SELECT pseudo,mail FROM member_list');
 if (isset($_POST['mail']) AND isset($_POST['pseudo']) AND isset($_POST['pass'])) {
@@ -22,17 +16,17 @@ if (isset($_POST['mail']) AND isset($_POST['pseudo']) AND isset($_POST['pass']))
 
     $reponse->closeCursor();
     if ($notListed) {
-        $pseudo = $_POST['pseudo'];
-        $mdp = password_hash($_POST['pass'], PASSWORD_DEFAULT);
+        $pseudo = strip_tags($_POST['pseudo']);
+        $mdp = strip_tags(password_hash($_POST['pass'], PASSWORD_DEFAULT));
         $email = $_POST['mail'];
-        $requete = $bdd->prepare('INSERT INTO member_list(pseudo,mail,password)VALUES(:pseudo,:mail,:password)');
-        $requete->execute(array(
+        $request = $bdd->prepare('INSERT INTO member_list(pseudo,mail,password)VALUES(:pseudo,:mail,:password)');
+        $request->execute(array(
             'pseudo' => $pseudo,
             'mail' => $email,
             'password' => $mdp
         ));
         echo '<span class="alert-info">Votre inscription a bien été enregistrée</span>';
-        $requete->closeCursor();
+        $request->closeCursor();
     }
 }
 ?>
@@ -60,7 +54,7 @@ if (isset($_POST['mail']) AND isset($_POST['pseudo']) AND isset($_POST['pass']))
 </header>
 <main>
     <div id="formulaire">
-        <form class="col-lg-4" id="form_inscription" method="post" action="form_inscription.php">
+        <form class="col-lg-4" id="form_inscription" method="post" action="inscription.php">
             <fieldset class="bg-dark">
                 <div class="form-group">
                     <legend>Rejoins nous on est bien!</legend>
