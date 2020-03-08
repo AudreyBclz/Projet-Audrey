@@ -49,7 +49,7 @@ function connect()
                 session_start();
                 $_SESSION['pseudo']=$donnees['pseudo'];
                 $_SESSION['balance']=$donnees['balance'];
-                header('Location: Accueil.html');
+                header('Location: Accueil.php');
             }
         }
         if (!$connected)
