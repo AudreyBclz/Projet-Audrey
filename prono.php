@@ -1,4 +1,8 @@
 <?php
+session_start();
+$balance=$_SESSION['balance'];
+$id=$_SESSION['pseudo'];
+
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -29,7 +33,7 @@
                     <a class="nav-link" href="Accueil.html">Accueil</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Vous avez 1000 ¤</a>
+                    <a class="nav-link" href="#">Vous avez <?php $balance?> ¤</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="Post_Article.html">Poster un article</a>
@@ -50,7 +54,7 @@
 </header>
 <main>
     <div id="prono-cote">
-        <form class="col-lg-5 prono-pc" id="formulaire">
+        <form class="col-lg-5 prono-pc" id="formulaire" method="post">
             <div>
                 <fieldset class="bg-dark pad-0">
                     <div class="form-group bg-dark">

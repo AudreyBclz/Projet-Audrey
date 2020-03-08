@@ -7,7 +7,7 @@ function controlProno()
 
     for (let i=1;i<=10;i++)
         {
-            if (!(document.getElementsByName("match"+i)[0].checked || document.getElementsByName("match"+i)[1].checked || document.getElementsByName("match"+i)[2].checked))
+            if (!(document.getElementsByName("match"+i)[0].checked||document.getElementsByName("match"+i)[1].checked||document.getElementsByName("match"+i)[2].checked))
             {
                 missValue=true;
             }

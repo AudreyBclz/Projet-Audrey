@@ -38,7 +38,7 @@ function connect()
 {
     include('dbconnect.php');
     $connected = false;
-    $reponse = $bdd->query('SELECT pseudo,password FROM member_list');
+    $reponse = $bdd->query('SELECT pseudo,password,balance FROM member_list');
     if (isset($_POST['pseudo_co']) AND isset($_POST['password_co']))
     {
         while ($donnees = $reponse->fetch())
@@ -48,6 +48,7 @@ function connect()
                 $connected = true;
                 session_start();
                 $_SESSION['pseudo']=$donnees['pseudo'];
+                $_SESSION['balance']=$donnees['balance'];
                 header('Location: Accueil.html');
             }
         }
@@ -57,3 +58,5 @@ function connect()
         }
     }
 }
+
+
