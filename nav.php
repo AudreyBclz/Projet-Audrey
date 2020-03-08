@@ -29,7 +29,7 @@ else
                     <a class="nav-link" href="chat.html">Chat</a>
                 </li>
                 <li class="nav-item active">
-                    <a class="nav-link" href="#">Pronostic de la semaine</a>
+                    <a class="nav-link" href="prono.php">Pronostic de la semaine</a>
                 </li>
                 <li class="nav-item">
                      <a class="nav-link" href="deconnexion.html">Déconnexion</a>

@@ -1,6 +1,7 @@
 <?php
 session_start();
-
+$balance =$_SESSION['balance'];
+$pseudo=$_SESSION['pseudo'];
 ?>
 <!DOCTYPE html>
 <html lang="fr">
