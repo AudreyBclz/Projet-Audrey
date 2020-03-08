@@ -17,10 +17,10 @@ else
                     <span class="nav-link text-danger">Bonjour <?php echo $_SESSION['pseudo']?></span>
                 </li>
                 <li class="nav-item">
-                    <span class="nav-link text-danger">Vous avez <?php echo $_SESSION['balance']?> ¤</span>
+                    <span class="nav-link text-danger">Vous avez <?php echo $_SESSION['balance']?> cr</span>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="Accueil.html">Accueil</a>
+                    <a class="nav-link" href="Accueil.php">Accueil</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="Post_Article.html">Poster un article</a>
@@ -37,6 +37,10 @@ else
             </ul>
         </div>
     </nav>
+    <script src="js/jquery-3.4.1.js"></script>
+    <script>
+        $("li")
+    </script>
 <?php
 }
 ?>
