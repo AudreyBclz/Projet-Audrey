@@ -19,25 +19,24 @@ else
                 <li class="nav-item">
                     <span class="nav-link text-danger">Vous avez <?php echo $_SESSION['balance']?> ¤</span>
                 </li>
-<li class="nav-item">
-    <a class="nav-link" href="Accueil.html">Accueil</a>
-</li>
-
-<li class="nav-item">
-    <a class="nav-link" href="Post_Article.html">Poster un article</a>
-</li>
-<li class="nav-item">
-    <a class="nav-link" href="chat.html">Chat</a>
-</li>
-<li class="nav-item active">
-    <a class="nav-link" href="#">Pronostic de la semaine</a>
-</li>
-<li class="nav-item">
-    <a class="nav-link" href="deconnexion.html">Déconnexion</a>
-</li>
-</ul>
-</div>
-</nav>
+                <li class="nav-item">
+                    <a class="nav-link" href="Accueil.html">Accueil</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="Post_Article.html">Poster un article</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="chat.html">Chat</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Pronostic de la semaine</a>
+                </li>
+                <li class="nav-item">
+                     <a class="nav-link" href="deconnexion.html">Déconnexion</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
 <?php
 }
 ?>
