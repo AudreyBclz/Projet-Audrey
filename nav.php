@@ -14,22 +14,22 @@ else
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <span class="nav-link text-danger">Bonjour <?php echo $_SESSION['pseudo']?></span>
+                    <span class="nav-link text-warning">Bonjour <?php echo $_SESSION['pseudo']?></span>
                 </li>
                 <li class="nav-item">
-                    <span class="nav-link text-danger">Vous avez <?php echo $_SESSION['balance']?> cr</span>
+                    <span class="nav-link text-warning">Vous avez <?php echo $_SESSION['balance']?> cr</span>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="Accueil.php" id="idAccueil">Accueil</a>
+                    <a class="nav-link " href="Accueil.php" id="Accueil">Accueil</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="Post_Article.html" id="idPostArticle">Poster un article</a>
+                    <a class="nav-link" href="Post_Article.html" id="Post_Article">Poster un article</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="chat.html" id="idChat">Chat</a>
+                    <a class="nav-link" href="chat.html" id="chat">Chat</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="prono.php" id="idProno">Pronostic de la semaine</a>
+                    <a class="nav-link" href="prono.php" id="prono">Pronostic de la semaine</a>
                 </li>
                 <li class="nav-item">
                      <a class="nav-link" href="deconnexion.html">Déconnexion</a>
@@ -39,15 +39,18 @@ else
     </nav>
     <script src="js/jquery-3.4.1.js"></script>
     <script>
-        function class_active()
-        {
-            this.addClass("active");
-            $("li:not(.this)").removeClass("active");
-        }
-        $('#idProno').on("click",class_active());
-        $('#idChat').on("click",class_active());
-        $('#idPostArticle').on("click",class_active());
-        $('#idAccueil').on("click",class_active());
+        var url=location.href;
+        console.log(url);
+        url=url.split("/");
+        console.log(url);
+        url=url[url.length-1];
+        console.log(url);
+        url=url.split('.');
+        console.log(url);
+        url=url[0];
+        console.log(url);
+        $("li").removeClass("active");
+        $("#"+url).addClass("active");
     </script>
 <?php
 }
