@@ -40,15 +40,10 @@ else
     <script src="js/jquery-3.4.1.js"></script>
     <script>
         var url=location.href;
-        console.log(url);
         url=url.split("/");
-        console.log(url);
         url=url[url.length-1];
-        console.log(url);
         url=url.split('.');
-        console.log(url);
         url=url[0];
-        console.log(url);
         $("li").removeClass("active");
         $("#"+url).addClass("active");
     </script>
