@@ -59,4 +59,70 @@ function connect()
     }
 }
 
+function prono_record()
+{
+    $exist=true;
+    include ('dbconnect.php');
+    $request=$bdd->prepare('SELECT pseudo FROM prono_user WHERE pseudo=:pseudo');
+    $request->execute(array(
+        'pseudo'=>$_SESSION['pseudo']
+    ));
+    $result=$request->fetch();
+    if ($_SESSION['pseudo']==$result['pseudo'])
+    {
+        echo'<span class="alert-warning">Vous avez déjà parier pour cette session</span>';
+    }
+
+    for ($i=1;$i<=10;$i++)
+    {
+        if(!(isset($_POST['match'.$i])))
+        {
+            $exist=false;
+        }
+    }
+    if($exist)
+    {
+        $sumMount=0;
+        for($i=1;$i<=10;$i++)
+        {
+            $sumMount=$sumMount+$_SESSION['mount'.$i];
+        }
+        if($sumMount>$_SESSION['balance'])
+        {
+            echo'<span class="text-info">Le montant parié est supérieur à vos crédits. Veuillez recommencer</span>';
+        }
+        else
+            {
+                $request->closeCursor();
+                $request=$bdd->prepare('INSERT INTO prono_user(pseudo,match1,mount1,match2,mount2,match3,mount3,match4,mount4,match5,mount5,match6,mount6,match7,mount7,match8,mount8,match9,mount9,match10,mount10)
+        VALUES(:pseudo,:match1,:mount1,:match2,:mount2,:match3,:mount3,:match4,:mount4,:match5,:mount5,:match6,:mount6,:match7,:mount7,:match8,:mount8,:match9,:mount9,:match10,:mount10)');
+                $request->execute(array(
+                    'pseudo'=>$_SESSION['pseudo'],
+                    'match1'=>$_POST['match1'],
+                    'mount1'=>$_POST['mount1'],
+                    'match2'=>$_POST['match2'],
+                    'mount2'=>$_POST['mount2'],
+                    'match3'=>$_POST['match3'],
+                    'mount3'=>$_POST['mount3'],
+                    'match4'=>$_POST['match4'],
+                    'mount4'=>$_POST['mount4'],
+                    'match5'=>$_POST['match5'],
+                    'mount5'=>$_POST['mount5'],
+                    'match6'=>$_POST['match6'],
+                    'mount6'=>$_POST['mount6'],
+                    'match7'=>$_POST['match7'],
+                    'mount7'=>$_POST['mount7'],
+                    'match8'=>$_POST['match8'],
+                    'mount8'=>$_POST['mount8'],
+                    'match9'=>$_POST['match9'],
+                    'mount9'=>$_POST['mount9'],
+                    'match10'=>$_POST['match10'],
+                    'mount10'=>$_POST['mount10']
+                ));
+                echo'<span class="alert-info">Votre pronostic a bien été enregistré</span>';
+            }
+
+    }
+}
+
 

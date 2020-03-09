@@ -2,6 +2,8 @@
 session_start();
 $balance =$_SESSION['balance'];
 $pseudo=$_SESSION['pseudo'];
+require('function.php');
+prono_record();
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -26,7 +28,7 @@ $pseudo=$_SESSION['pseudo'];
 </header>
 <main>
     <div id="prono-cote">
-        <form class="col-lg-5 prono-pc" id="formulaire" method="post">
+        <form class="col-lg-5 prono-pc" id="formulaire" method="post" action="prono.php">
             <div>
                 <fieldset class="bg-dark pad-0">
                     <div class="form-group bg-dark">
