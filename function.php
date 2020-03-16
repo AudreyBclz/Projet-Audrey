@@ -143,5 +143,34 @@ function prono_record()
     }
 
 }
+$indice=1;
+function post_article()
+{
+    include ('dbconnect.php');
+    if(isset($_POST["title"]) AND isset($_POST["content"]) AND isset($_FILES["picture"]))
+    {
+        if($_POST["title"]==="" || $_POST["content"]==="")
+        {
+            echo'<span class="alert-warning"> Veuillez remplir tous les champs.</span>';
+        }
+        if(!($_FILES["picture"]['type']=='image/jpeg' OR $_FILES["picture"]['type']=='image/png'))
+        {
+            echo'<span class="alert-warning">Seul les formats JPEG et PNG sont acceptés, trouvez une autre image</span>';
+        }
+        else
+        {
+            move_uploaded_file($_FILES['picture']['name'],'img/articles');
+            if ($_FILES["picture"]['type']=='image/jpeg')
+            {
+                $chemin=$_FILES['picture']['name'].'.jpg';
+            }
+            else
+            {
+                $chemin=$_FILES['picture']['name'].'.png';
+            }
+        }
+    }
+
+}
 
 

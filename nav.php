@@ -23,7 +23,7 @@ else
                     <a class="nav-link " href="Accueil.php" id="Accueil">Accueil</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="Post_Article.html" id="Post_Article">Poster un article</a>
+                    <a class="nav-link" href="Post_Article.php" id="Post_Article">Poster un article</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="chat.html" id="chat">Chat</a>
