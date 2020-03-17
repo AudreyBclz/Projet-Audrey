@@ -146,29 +146,41 @@ function prono_record()
 $indice=1;
 function post_article()
 {
-    include ('dbconnect.php');
-    if(isset($_POST["title"]) AND isset($_POST["content"]) AND isset($_FILES["picture"]))
+    include('dbconnect.php');
+    if (isset($_POST["title"]) AND isset($_POST["content"]) AND isset($_FILES["picture"]))
     {
-        if($_POST["title"]==="" || $_POST["content"]==="")
+        if ($_POST["title"] === "" || $_POST["content"] === "")
         {
-            echo'<span class="alert-warning"> Veuillez remplir tous les champs.</span>';
-        }
-        if(!($_FILES["picture"]['type']=='image/jpeg' OR $_FILES["picture"]['type']=='image/png'))
+            echo '<span class="alert-warning"> Veuillez remplir tous les champs.</span><br/>';
+        } elseif (!($_FILES["picture"]['type'] == 'image/jpeg' || $_FILES["picture"]['type'] == 'image/png'))
         {
-            echo'<span class="alert-warning">Seul les formats JPEG et PNG sont acceptés, trouvez une autre image</span>';
-        }
-        else
-        {
-            move_uploaded_file($_FILES['picture']['name'],'img/articles');
-            if ($_FILES["picture"]['type']=='image/jpeg')
+            echo '<span class="alert-warning">Seul les formats JPEG et PNG sont acceptés, trouvez une autre image</span>';
+        } else
             {
-                $chemin=$_FILES['picture']['name'].'.jpg';
+                if ($_FILES["picture"]['type'] == 'image/jpeg') {
+                    $chemin = "img/articles/" . $_FILES['picture']['name'];
+                    $fileName=basename($_FILES['picture']['name'],".jpg");
+                } else
+                {
+                    $chemin = "img/articles/" . $_FILES['picture']['name'];
+                    $fileName=basename($_FILES['picture']['name'],".png");
+                }
+
+                move_uploaded_file($_FILES['picture']['tmp_name'], 'www/Projet-Audrey/img/articles');
+
+                $pseudo = $_SESSION['pseudo'];
+                $title = $_POST['title'];
+                $content = $_POST['content'];
+                $request = $bdd->prepare('INSERT INTO article (pseudo,title,content,picture) VALUES(:pseudo,:title,:content,:picture)');
+                $request->execute(array(
+                    'pseudo' => $pseudo,
+                    'title' => $title,
+                    'content' => $content,
+                    'picture' => $chemin
+                ));
+                $request->closeCursor();
+                echo '<span class="alert-info">Article bien enregistré.</span>';
             }
-            else
-            {
-                $chemin=$_FILES['picture']['name'].'.png';
-            }
-        }
     }
 
 }
