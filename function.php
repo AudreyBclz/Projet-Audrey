@@ -143,7 +143,7 @@ function prono_record()
     }
 
 }
-$indice=1;
+
 function post_article()
 {
     include('dbconnect.php');
@@ -157,32 +157,36 @@ function post_article()
             echo '<span class="alert-warning">Seul les formats JPEG et PNG sont acceptés, trouvez une autre image</span>';
         } else
             {
-                if ($_FILES["picture"]['type'] == 'image/jpeg') {
-                    $chemin = "img/articles/" . $_FILES['picture']['name'];
-                    $fileName=basename($_FILES['picture']['name'],".jpg");
-                } else
+            if ($_FILES["picture"]['type'] == 'image/jpeg')
+            {
+                $chemin = "img/articles/" . $_FILES['picture']['name'];
+                $fileName = basename($_FILES['picture']['name'], ".jpg");
+                $destination = 'img/articles/' . 'articles' . $indice . '.jpg';
+            } else
                 {
-                    $chemin = "img/articles/" . $_FILES['picture']['name'];
-                    $fileName=basename($_FILES['picture']['name'],".png");
+                $chemin = "img/articles/" . $_FILES['picture']['name'];
+                $fileName = basename($_FILES['picture']['name'], ".png");
+                $destination = 'img/articles/' . 'articles' . $indice . ".png";
                 }
+            move_uploaded_file($_FILES['picture']['tmp_name'], 'img/articles/' . $_FILES['picture']['name']);
+            rename($fileName, 'articles' . $indice);
+            rename('img/articles/' . $_FILES['picture']['name'], $destination);
+            $indice++;
 
-                move_uploaded_file($_FILES['picture']['tmp_name'], 'www/Projet-Audrey/img/articles');
-
-                $pseudo = $_SESSION['pseudo'];
-                $title = $_POST['title'];
-                $content = $_POST['content'];
-                $request = $bdd->prepare('INSERT INTO article (pseudo,title,content,picture) VALUES(:pseudo,:title,:content,:picture)');
-                $request->execute(array(
-                    'pseudo' => $pseudo,
-                    'title' => $title,
-                    'content' => $content,
-                    'picture' => $chemin
-                ));
-                $request->closeCursor();
-                echo '<span class="alert-info">Article bien enregistré.</span>';
-            }
+            $pseudo = $_SESSION['pseudo'];
+            $title = $_POST['title'];
+            $content = $_POST['content'];
+            $request = $bdd->prepare('INSERT INTO article (pseudo,title,content,picture) VALUES(:pseudo,:title,:content,:picture)');
+            $request->execute(array(
+                'pseudo' => $pseudo,
+                'title' => $title,
+                'content' => $content,
+                'picture' => $destination
+            ));
+            $request->closeCursor();
+            echo '<span class="alert-info">Article bien enregistré.</span>';
+        }
     }
-
 }
 
 

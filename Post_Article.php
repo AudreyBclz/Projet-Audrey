@@ -1,8 +1,8 @@
 <?php
 session_start();
+$indice=1;
 require ('function.php');
 post_article();
-
 ?>
 <!DOCTYPE html>
 <html lang="fr">
