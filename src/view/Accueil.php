@@ -26,7 +26,7 @@ session_start();
         <div id="article_diapo">
             <p>Voici l'aperçu des articles écrits par la communauté. Vous aussi vous pouvez contribuer en postant les vôtres. </p>
             <div id="article">
-                <img src=../../assets/img/articles/article1.jpg" class="img-thumbnail" id="diapo" alt=""/>
+                <img src="../../assets/img/articles/article1.jpg" class="img-thumbnail" id="diapo" alt=""/>
             </div>
             <div id="article_description">
                 <a href="article.html">Les origines du foot et son évolution à travers les âges</a>
