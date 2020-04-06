@@ -1,7 +1,19 @@
 <?php
-require_once '../config/config.php';
+
+function chemin_config()
+{
+    if($_SERVER['REQUEST_URI']==="/Projet-Audrey/index.php")
+    {
+        require'src/config/config.php';
+    }else
+        {
+            require'../config/config.php';
+        }
+}
+chemin_config();
 function dbconnect()
 {
+
     try{
         $bdd=new PDO('mysql:host='.LOCALHOST.';dbname='.DBNAME.';charset=utf8',DBID,DBMDP,array(PDO::ATTR_ERRMODE=>PDO::ERRMODE_EXCEPTION));
         return $bdd;

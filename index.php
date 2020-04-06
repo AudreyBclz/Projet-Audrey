@@ -1,5 +1,4 @@
 <?php
-
 require'src/controller/function.php';
 require_once'src/view/elements/head.php';
 require_once 'src/view/elements/footer.php';
@@ -43,7 +42,7 @@ connect();
             </div>
         </div>
         <div id="connexion">
-            <p> Pour vous inscrire <a href="inscription.php">cliquer ici</a></p>
+            <p> Pour vous inscrire <a href="src/view/inscription.php">cliquer ici</a></p>
             <form method="post" action="inscription.php">
                 <fieldset class="bg-dark">
                     <div class="form-group">
@@ -66,13 +65,12 @@ connect();
         <img src="assets/img/logo.png" id="logo"/>
     </main>
 
-
 <script type="text/javascript" src="assets/js/popper.min.js"></script>
 <script type="text/javascript" src="assets/js/jquery-3.4.1.js"></script>
 <script type="text/javascript" src="assets/js/Bootstrap/bootstrap.js"></script>
 <script type="text/javascript" src="assets/js/controlProno.js"></script>
 <script type="text/javascript" src="assets/js/controle_form.js"></script>
-<script type="text/javascript" src="assets/js/diapo_article.js"></script>
+<script type="text/javascript" src="assets/js/diapo_article_i.js"></script>
 </body>
 </html>
 
