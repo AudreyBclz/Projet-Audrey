@@ -1,6 +1,6 @@
 <?php
 session_start();
-require('function.php');
+require('../../src/controller/function.php');
 inscription();
 connect();
 ?>
@@ -9,11 +9,11 @@ connect();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, user-scalable=no">
-    <link href="css/Bootstrap/bootstrap.css" rel="stylesheet"/>
-    <link href="css/normalisation.css" rel="stylesheet"/>
-    <link href="css/PC.css" rel="stylesheet"/>
-    <link href="css/Tablette.css" rel="stylesheet"/>
-    <link href="css/MOB.css" rel="stylesheet"/>
+    <link href="../../assets/css/Bootstrap/bootstrap.css" rel="stylesheet"/>
+    <link href="../../assets/css/normalisation.css" rel="stylesheet"/>
+    <link href="../../assets/css/PC.css" rel="stylesheet"/>
+    <link href="../../assets/css/Tablette.css" rel="stylesheet"/>
+    <link href="../../assets/css/MOB.css" rel="stylesheet"/>
 
 
 
@@ -82,12 +82,12 @@ connect();
             </fieldset>
         </form>
     </div>
-    <img src="img/logo.png" id="logo"/>
+    <img src="../../assets/img/logo.png" id="logo"/>
 </main>
 
-<script src="js/controle_form.js"></script>
-<script src="js/Bootstrap/bootstrap.js" rel="script"></script>
-<script src="js/JQuery.js" rel="script"></script>
-<script src="js/popper.min.js" rel="script"></script>
+<script src="../../assets/js/popper.min.js"></script>
+<script src="../../assets/js/Bootstrap/bootstrap.js" rel="script"></script>
+<script src="../../assets/js/JQuery.js" rel="script"></script>
+<script src="../../assets/js/popper.min.js" rel="script"></script>
 </body>
 </html>

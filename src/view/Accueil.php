@@ -6,11 +6,11 @@ session_start();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, user-scalable=no">
-    <link href="css/Bootstrap/bootstrap.css" rel="stylesheet"/>
-    <link href="css/normalisation.css" rel="stylesheet"/>
-    <link href="css/PC.css" rel="stylesheet"/>
-    <link href="css/Tablette.css" rel="stylesheet"/>
-    <link href="css/MOB.css" rel="stylesheet"/>
+    <link href="../../assets/css/Bootstrap/bootstrap.css" rel="stylesheet"/>
+    <link href="../../assets/css/normalisation.css" rel="stylesheet"/>
+    <link href="../../assets/css/PC.css" rel="stylesheet"/>
+    <link href="../../assets/css/Tablette.css" rel="stylesheet"/>
+    <link href="../../assets/css/MOB.css" rel="stylesheet"/>
 
     <title>Les Pronos Stickers!!</title>
 </head>
@@ -26,7 +26,7 @@ session_start();
         <div id="article_diapo">
             <p>Voici l'aperçu des articles écrits par la communauté. Vous aussi vous pouvez contribuer en postant les vôtres. </p>
             <div id="article">
-                <img src="img/articles/article1.jpg" class="img-thumbnail" id="diapo" alt=""/>
+                <img src=../../assets/img/articles/article1.jpg" class="img-thumbnail" id="diapo" alt=""/>
             </div>
             <div id="article_description">
                 <a href="article.html">Les origines du foot et son évolution à travers les âges</a>
@@ -51,9 +51,9 @@ session_start();
 </main>
 
 
-<script type="text/javascript" src="js/popper.min.js" ></script>
-<script type="text/javascript" src="js/jquery-3.4.1.js"></script>
-<script type="text/javascript" src="js/Bootstrap/bootstrap.js"></script>
-<script type="text/javascript" src="js/diapo_article.js"></script>
+<script type="text/javascript" src="../../assets/js/popper.min.js" ></script>
+<script type="text/javascript" src="../../assets/js/jquery-3.4.1.js"></script>
+<script type="text/javascript" src="../../assets/js/Bootstrap/bootstrap.js"></script>
+<script type="text/javascript" src="../../assets/js/diapo_article.js"></script>
 </body>
 </html>

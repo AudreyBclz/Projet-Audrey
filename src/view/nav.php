@@ -7,7 +7,7 @@ else
 {
     ?>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark-red">
-        <span class="navbar-brand"><img src="img/gif%20logo.gif"/></span>
+        <span class="navbar-brand"><img src="../../assets/img/gif%20logo.gif"/></span>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -37,7 +37,7 @@ else
             </ul>
         </div>
     </nav>
-    <script src="js/jquery-3.4.1.js"></script>
+    <script src="../../assets/js/jquery-3.4.1.js"></script>
     <script>
         var url=location.href;
         url=url.split("/");

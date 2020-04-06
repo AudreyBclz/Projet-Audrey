@@ -2,7 +2,7 @@
 session_start();
 $balance =$_SESSION['balance'];
 $pseudo=$_SESSION['pseudo'];
-require('function.php');
+require('../../src/controller/function.php');
 prono_record();
 ?>
 <!DOCTYPE html>
@@ -10,11 +10,11 @@ prono_record();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, user-scalable=no">
-    <link href="css/Bootstrap/bootstrap.css" rel="stylesheet"/>
-    <link href="css/normalisation.css" rel="stylesheet"/>
-    <link href="css/PC.css" rel="stylesheet"/>
-    <link href="css/Tablette.css" rel="stylesheet"/>
-    <link href="css/MOB.css" rel="stylesheet"/>
+    <link href="../../assets/css/Bootstrap/bootstrap.css" rel="stylesheet"/>
+    <link href="../../assets/css/normalisation.css" rel="stylesheet"/>
+    <link href="../../assets/css/PC.css" rel="stylesheet"/>
+    <link href="../../assets/css/Tablette.css" rel="stylesheet"/>
+    <link href="../../assets/css/MOB.css" rel="stylesheet"/>
 
 
 

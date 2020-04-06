@@ -1,7 +1,7 @@
 <?php
 session_start();
 $indice=1;
-require ('function.php');
+require ('../../src/controller/function.php');
 post_article();
 ?>
 <!DOCTYPE html>
@@ -9,11 +9,11 @@ post_article();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, user-scalable=no">
-    <link href="css/Bootstrap/bootstrap.css" rel="stylesheet"/>
-    <link href="css/normalisation.css" rel="stylesheet"/>
-    <link href="css/PC.css" rel="stylesheet"/>
-    <link href="css/MOB.css" rel="stylesheet"/>
-    <link href="css/Tablette.css" rel="stylesheet"/>
+    <link href="../../assets/css/Bootstrap/bootstrap.css" rel="stylesheet"/>
+    <link href="../../assets/css/normalisation.css" rel="stylesheet"/>
+    <link href="../../assets/css/PC.css" rel="stylesheet"/>
+    <link href="../../assets/css/MOB.css" rel="stylesheet"/>
+    <link href="../../assets/css/Tablette.css" rel="stylesheet"/>
 
 
 
@@ -53,8 +53,8 @@ post_article();
         </div>
     </main>
 
-    <script type="text/javascript" src="js/popper.min.js" ></script>
-    <script type="text/javascript" src="js/jquery-3.4.1.js"></script>
-    <script type="text/javascript" src="js/Bootstrap/bootstrap.js"></script>
+    <script type="text/javascript" src="../../assets/js/popper.min.js" ></script>
+    <script type="text/javascript" src="../../assets/js/jquery-3.4.1.js"></script>
+    <script type="text/javascript" src="../../assets/js/Bootstrap/bootstrap.js"></script>
 </body>
 </html>
