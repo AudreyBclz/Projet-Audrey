@@ -2,28 +2,12 @@
 session_start();
 $balance =$_SESSION['balance'];
 $pseudo=$_SESSION['pseudo'];
-require('../../src/controller/function.php');
+require'../../src/controller/function.php';
+require_once 'elements/head.php';
+require_once 'elements/footer.php';
+head();
 prono_record();
-?>
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, user-scalable=no">
-    <link href="../../assets/css/Bootstrap/bootstrap.css" rel="stylesheet"/>
-    <link href="../../assets/css/normalisation.css" rel="stylesheet"/>
-    <link href="../../assets/css/PC.css" rel="stylesheet"/>
-    <link href="../../assets/css/Tablette.css" rel="stylesheet"/>
-    <link href="../../assets/css/MOB.css" rel="stylesheet"/>
-
-
-
-    <title>Les Pronos Stickers!!</title>
-</head>
-<body>
-
-<header>
-<?php include ('nav.php');?>
+include('elements/nav.php');?>
     <h1>Pronostic de la semaine</h1>
 </header>
 <main>
@@ -402,11 +386,6 @@ prono_record();
             </div>
         </form>
     </div>
-</main>
-
-<script type="text/javascript" src="js/controlProno.js"></script>
-<script type="text/javascript" src="js/popper.min.js" ></script>
-<script type="text/javascript" src="js/jquery-3.4.1.js"></script>
-<script type="text/javascript" src="js/Bootstrap/bootstrap.js"></script>
-</body>
-</html>
+<?php
+footer();
+?>

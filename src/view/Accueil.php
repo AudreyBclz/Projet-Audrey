@@ -1,23 +1,10 @@
 <?php
 session_start();
-?>
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, user-scalable=no">
-    <link href="../../assets/css/Bootstrap/bootstrap.css" rel="stylesheet"/>
-    <link href="../../assets/css/normalisation.css" rel="stylesheet"/>
-    <link href="../../assets/css/PC.css" rel="stylesheet"/>
-    <link href="../../assets/css/Tablette.css" rel="stylesheet"/>
-    <link href="../../assets/css/MOB.css" rel="stylesheet"/>
+require_once'elements/head.php';
+require_once 'elements/footer.php';
+head();
+include'elements/nav.php'; ?>
 
-    <title>Les Pronos Stickers!!</title>
-</head>
-<body>
-
-<header>
-<?php include ('nav.php'); ?>
     <h1 class="col-sm-12"> Accueil</h1>
 
 </header>
@@ -48,12 +35,7 @@ session_start();
             <p class="bg-dark msgChat">@JAYGL le 16/02/20 à 10h03<br/> lzidzhgi ohzd ihdjzhd hdzighdg hi zdh iz hpih zphd hpozh dp</p>
         </div>
     </div>
-</main>
-
-
-<script type="text/javascript" src="../../assets/js/popper.min.js" ></script>
-<script type="text/javascript" src="../../assets/js/jquery-3.4.1.js"></script>
-<script type="text/javascript" src="../../assets/js/Bootstrap/bootstrap.js"></script>
-<script type="text/javascript" src="../../assets/js/diapo_article.js"></script>
-</body>
-</html>
+    <script type="text/javascript" src="../../assets/js/diapo_article.js"></script>
+<?php
+footer();
+?>

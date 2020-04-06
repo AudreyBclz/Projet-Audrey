@@ -1,28 +1,14 @@
 <?php
 session_start();
 $indice=1;
-require ('../../src/controller/function.php');
+require '../../src/controller/function.php';
+require_once 'elements/head.php';
+require_once 'elements/footer.php';
+head();
 post_article();
+include'elements/nav.php';
 ?>
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, user-scalable=no">
-    <link href="../../assets/css/Bootstrap/bootstrap.css" rel="stylesheet"/>
-    <link href="../../assets/css/normalisation.css" rel="stylesheet"/>
-    <link href="../../assets/css/PC.css" rel="stylesheet"/>
-    <link href="../../assets/css/MOB.css" rel="stylesheet"/>
-    <link href="../../assets/css/Tablette.css" rel="stylesheet"/>
 
-
-
-    <title>Les Pronos Stickers!!</title>
-</head>
-<body>
-
-<header>
-   <?php include ('nav.php')?>
     <h1>Poster un article</h1>
     <main id="main">
         <div class="col-lg-6">
@@ -53,8 +39,6 @@ post_article();
         </div>
     </main>
 
-    <script type="text/javascript" src="../../assets/js/popper.min.js" ></script>
-    <script type="text/javascript" src="../../assets/js/jquery-3.4.1.js"></script>
-    <script type="text/javascript" src="../../assets/js/Bootstrap/bootstrap.js"></script>
-</body>
-</html>
+ <?php
+footer();
+?>

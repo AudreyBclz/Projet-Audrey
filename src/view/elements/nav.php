@@ -7,7 +7,7 @@ else
 {
     ?>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark-red">
-        <span class="navbar-brand"><img src="../../assets/img/gif%20logo.gif"/></span>
+        <span class="navbar-brand"><img src="../../assets/img/gif_logo.gif"/></span>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -20,19 +20,19 @@ else
                     <span class="nav-link text-warning">Vous avez <?php echo $_SESSION['balance']?> cr</span>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link " href="Accueil.php" id="Accueil">Accueil</a>
+                    <a class="nav-link " href="../view/Accueil.php" id="Accueil">Accueil</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="Post_Article.php" id="Post_Article">Poster un article</a>
+                    <a class="nav-link" href="../view/Post_Article.php" id="Post_Article">Poster un article</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="chat.html" id="chat">Chat</a>
+                    <a class="nav-link" href="../view/chat.html" id="chat">Chat</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="prono.php" id="prono">Pronostic de la semaine</a>
+                    <a class="nav-link" href="../view/prono.php" id="prono">Pronostic de la semaine</a>
                 </li>
                 <li class="nav-item">
-                     <a class="nav-link" href="deconnexion.html">Déconnexion</a>
+                     <a class="nav-link" href="../view/deconnexion.php" id="deconnexion">Déconnexion</a>
                 </li>
             </ul>
         </div>

@@ -1,8 +1,21 @@
 <?php
+require_once '../config/config.php';
+function dbconnect()
+{
+    try{
+        $bdd=new PDO('mysql:host='.LOCALHOST.';dbname='.DBNAME.';charset=utf8',DBID,DBMDP,array(PDO::ATTR_ERRMODE=>PDO::ERRMODE_EXCEPTION));
+        return $bdd;
+    }
+    catch (Exception $e)
+    {
+        die('Erreur: '.$e->getMessage());
+    }
+};
+
 
 function inscription()
 {
-    include('dbconnect.php');
+    $bdd=dbconnect();
     $notListed=true;
     $reponse=$bdd->query('SELECT pseudo,mail FROM member_list');
     if (isset($_POST['mail']) AND isset($_POST['pseudo']) AND isset($_POST['pass'])) {
@@ -36,7 +49,7 @@ function inscription()
 
 function connect()
 {
-    include('dbconnect.php');
+    $bdd=dbconnect();
     $connected = false;
     $reponse = $bdd->query('SELECT pseudo,password,balance FROM member_list');
     if (isset($_POST['pseudo_co']) AND isset($_POST['password_co']))
@@ -64,7 +77,7 @@ function prono_record()
     $sumMount=0;
     $balance_remain=0;
     $exist=true;
-    include ('dbconnect.php');
+    $bdd=dbconnect();
     $request=$bdd->prepare('SELECT pseudo FROM prono_user WHERE pseudo=:pseudo');
     $request->execute(array(
         'pseudo'=>$_SESSION['pseudo']
@@ -146,7 +159,7 @@ function prono_record()
 
 function post_article()
 {
-    include('dbconnect.php');
+    $bdd=dbconnect();
     if (isset($_POST["title"]) AND isset($_POST["content"]) AND isset($_FILES["picture"]))
     {
         if ($_POST["title"] === "" || $_POST["content"] === "")

@@ -1,5 +1,9 @@
 <?php
-require ('src/controller/function.php');
+
+require'src/controller/function.php';
+require_once'src/view/elements/head.php';
+require_once 'src/view/elements/footer.php';
+head();
 connect();
 ?>
 <!DOCTYPE html>
@@ -13,11 +17,11 @@ connect();
     <link href="assets/css/Tablette.css" rel="stylesheet"/>
     <link href="assets/css/MOB.css" rel="stylesheet"/>
 
-
     <title>Les Pronos Stickers!!</title>
 </head>
 <body>
-    <header>
+
+<header>
         <h1 class="col-sm-12"> Bienvenue chez les Pronos Stickers!</h1>
     </header>
 
@@ -62,9 +66,13 @@ connect();
         <img src="assets/img/logo.png" id="logo"/>
     </main>
 
-    <script src="assets/js/diapo_article.js"></script>
-    <script src="assets/js/Bootstrap/bootstrap.js" rel="script"></script>
-    <script src="assets/js/JQuery.js" rel="script"></script>
-    <script src="assets/js/popper.min.js" rel="script"></script>
+
+<script type="text/javascript" src="assets/js/popper.min.js"></script>
+<script type="text/javascript" src="assets/js/jquery-3.4.1.js"></script>
+<script type="text/javascript" src="assets/js/Bootstrap/bootstrap.js"></script>
+<script type="text/javascript" src="assets/js/controlProno.js"></script>
+<script type="text/javascript" src="assets/js/controle_form.js"></script>
+<script type="text/javascript" src="assets/js/diapo_article.js"></script>
 </body>
 </html>
+

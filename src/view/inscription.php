@@ -1,28 +1,14 @@
 <?php
 session_start();
-require('../../src/controller/function.php');
+require'../../src/controller/function.php';
+require_once 'elements/head.php';
+require_once 'elements/footer.php';
+head();
 inscription();
 connect();
+
 ?>
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, user-scalable=no">
-    <link href="../../assets/css/Bootstrap/bootstrap.css" rel="stylesheet"/>
-    <link href="../../assets/css/normalisation.css" rel="stylesheet"/>
-    <link href="../../assets/css/PC.css" rel="stylesheet"/>
-    <link href="../../assets/css/Tablette.css" rel="stylesheet"/>
-    <link href="../../assets/css/MOB.css" rel="stylesheet"/>
 
-
-
-
-
-    <title>Les Pronos Stickers!!</title>
-</head>
-<body>
-<header>
     <h1 class="col-sm-12"> Bienvenue chez les Pronos Stickers!</h1>
     <p class="col-sm-12 text-justify mb-5">Ici Vous trouverez des gens sympas et passionnés qui vous permettront de partager des bons moments et des bons tuyaux niveau pronostic :) </p>
 </header>
@@ -83,11 +69,6 @@ connect();
         </form>
     </div>
     <img src="../../assets/img/logo.png" id="logo"/>
-</main>
-
-<script src="../../assets/js/popper.min.js"></script>
-<script src="../../assets/js/Bootstrap/bootstrap.js" rel="script"></script>
-<script src="../../assets/js/JQuery.js" rel="script"></script>
-<script src="../../assets/js/popper.min.js" rel="script"></script>
-</body>
-</html>
+<?php
+footer();
+?>
