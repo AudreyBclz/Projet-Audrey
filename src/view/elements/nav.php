@@ -32,12 +32,12 @@ else
                     <a class="nav-link" href="../view/prono.php" id="prono">Pronostic de la semaine</a>
                 </li>
                 <li class="nav-item">
-                     <a class="nav-link" href="../view/deconnexion.php" id="deconnexion">Déconnexion</a>
+                     <a class="nav-link" href="../view/deconnexion.php" id="deconnexion.">Déconnexion</a>
                 </li>
             </ul>
         </div>
     </nav>
-    <script src="../../assets/js/jquery-3.4.1.js"></script>
+   <!--<script src="../../assets/js/jquery-3.4.1.js"></script>-->
     <script>
         var url=location.href;
         url=url.split("/");
