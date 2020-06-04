@@ -1,12 +1,48 @@
 <?php
 session_start();
-$indice=1;
 require '../../src/controller/function.php';
 require_once 'elements/head.php';
 require_once 'elements/footer.php';
 head();
-post_article();
 include'elements/nav.php';
+
+
+$bdd=dbconnect();
+    if (isset($_POST["title"]) && isset($_POST["content"]) && isset($_FILES["picture"]))
+    {
+        if ($_POST["title"] === "" || $_POST["content"] === "")
+        {
+            echo '<span class="alert-warning"> Veuillez remplir tous les champs.</span><br/>';
+        } elseif (!($_FILES["picture"]['type'] == 'image/jpeg' || $_FILES["picture"]['type'] == 'image/png'))
+        {
+            echo '<span class="alert-warning">Seul les formats JPEG et PNG sont acceptés, trouvez une autre image</span>';
+        } else
+        {
+            if ($_FILES["picture"]['type'] == 'image/jpeg')
+            {
+                $suffix=".jpg";
+            } else
+            {
+                $suffix=".png";
+            }
+            move_uploaded_file($_FILES['picture']['tmp_name'], '../../assets/img/articles/' . $_FILES['picture']['name']);
+
+            $pseudo = $_SESSION['pseudo'];
+            $title = $_POST['title'];
+            $content = $_POST['content'];
+            $request = $bdd->prepare('INSERT INTO article (pseudo,title,content,suffix) VALUES(:pseudo,:title,:content,:suffix)');
+            $request->execute(array(
+                'pseudo' => $pseudo,
+                'title' => $title,
+                'content' => $content,
+                'suffix'=>$suffix
+            ));
+            $request->closeCursor();
+            $indice=intval($bdd->lastInsertId());
+            rename('../../assets/img/articles/' . $_FILES['picture']['name'], '../../assets/img/articles/articles'.$indice.$suffix);
+            echo '<span class="alert-info">Article bien enregistré.</span>';
+        }
+    }
 ?>
 
     <h1>Poster un article</h1>

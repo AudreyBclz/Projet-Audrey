@@ -2,8 +2,38 @@
 require'src/controller/function.php';
 require_once'src/view/elements/head.php';
 require_once 'src/view/elements/footer.php';
+require_once 'src/controller/function.php';
 head();
+$bdd=dbconnect();
 connect();
+$sql1erArticle='SELECT * FROM article
+             LIMIT 0,1';
+$req1erArticle=$bdd->prepare($sql1erArticle);
+$req1erArticle->execute();
+$tab_1erarticle=array();
+while($data=$req1erArticle->fetchObject())
+{
+    array_push($tab_1erarticle,$data);
+}
+$sqlCompteArt='SELECT COUNT(*) as nbArt FROM article';
+$reqCompteArt=$bdd->prepare($sqlCompteArt);
+$reqCompteArt->execute();
+$tab_compte=array();
+while($data=$reqCompteArt->fetchObject())
+{
+    array_push($tab_compte,$data);
+}
+$nbArticle=intval($tab_compte[0]->nbArt);
+
+$sqlArticle='SELECT * FROM article
+             LIMIT 1,'.$nbArticle;
+$reqArticle=$bdd->prepare($sqlArticle);
+$reqArticle->execute();
+$tab_article=array();
+while($data=$reqArticle->fetchObject())
+{
+    array_push($tab_article,$data);
+}
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -31,13 +61,35 @@ connect();
                 <p class="d_none">Vous voulez nous rejoindre? Lire les articles? Cliquer <a href="src/view/inscription.php">ici</a></p>
             </div>
             <div class="col-lg-5">
-                <div id="article_diapo" class="d_none">
-                    <div id="article">
-                        <img src="assets/img/articles/article1.jpg" class="img-thumbnail" id="diapo" alt=""/>
+                <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+                    <div class="carousel-inner">
+                        <?php foreach ($tab_1erarticle as $article1er)
+                        { ?>
+                            <div class="carousel-item active">
+                                <img class="d-block img-thumbnail" src="assets/img/articles/articles<?= $article1er->ID ?><?= $article1er->suffix ?>" alt="..">
+                                <div id="article_description">
+                                    <span><?= $article1er->title ?></span>
+                                </div>
+                            </div>
+                        <?php }
+                        foreach ($tab_article as $article)
+                        { ?>
+                            <div class="carousel-item">
+                                <img class="d-block img-thumbnail" src="assets/img/articles/articles<?= $article->ID ?><?= $article->suffix ?>" alt="..">
+                                <div id="article_description">
+                                    <span><?= $article->title ?></span>
+                                </div>
+                            </div>
+                        <?php } ?>
                     </div>
-                    <div id="article_description">
-                        Les origines du foot et son évolution à travers les âges
-                    </div>
+                    <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
                 </div>
             </div>
         </div>
@@ -70,7 +122,7 @@ connect();
 <script type="text/javascript" src="assets/js/Bootstrap/bootstrap.js"></script>
 <script type="text/javascript" src="assets/js/controlProno.js"></script>
 <script type="text/javascript" src="assets/js/controle_form.js"></script>
-<script type="text/javascript" src="assets/js/diapo_article_i.js"></script>
+<!--<script type="text/javascript" src="assets/js/diapo_article_i.js"></script>-->
 </body>
 </html>
 

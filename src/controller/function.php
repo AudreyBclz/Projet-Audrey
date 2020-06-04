@@ -30,13 +30,13 @@ function inscription()
     $bdd=dbconnect();
     $notListed=true;
     $reponse=$bdd->query('SELECT pseudo,mail FROM member_list');
-    if (isset($_POST['mail']) AND isset($_POST['pseudo']) AND isset($_POST['pass'])) {
+    if (isset($_POST['mail']) && isset($_POST['pseudo']) && isset($_POST['pass'])) {
         while ($donnees = $reponse->fetch()) {
 
-            if ($donnees['pseudo'] == $_POST['pseudo']) {
+            if ($donnees['pseudo'] == trim($_POST['pseudo'])) {
                 $notListed = false;
                 echo '<span class="alert-info">Pseudo déjà utilisé, veuillez réessayer.</span>';
-            } elseif ($donnees['mail'] == $_POST['mail']) {
+            } elseif ($donnees['mail'] == trim($_POST['mail'])) {
                 $notListed = false;
                 echo '<span class="alert-info">Email déjà utilisé, veuillez réessayer.</span>';
             }
@@ -44,8 +44,8 @@ function inscription()
 
         $reponse->closeCursor();
         if ($notListed) {
-            $pseudo = strip_tags($_POST['pseudo']);
-            $mdp = strip_tags(password_hash($_POST['pass'], PASSWORD_DEFAULT));
+            $pseudo = strip_tags(trim(($_POST['pseudo'])));
+            $mdp = strip_tags(trim(password_hash($_POST['pass'], PASSWORD_DEFAULT)));
             $email = $_POST['mail'];
             $request = $bdd->prepare('INSERT INTO member_list(pseudo,mail,password)VALUES(:pseudo,:mail,:password)');
             $request->execute(array(
@@ -169,49 +169,5 @@ function prono_record()
 
 }
 
-function post_article()
-{
-    $bdd=dbconnect();
-    if (isset($_POST["title"]) AND isset($_POST["content"]) AND isset($_FILES["picture"]))
-    {
-        if ($_POST["title"] === "" || $_POST["content"] === "")
-        {
-            echo '<span class="alert-warning"> Veuillez remplir tous les champs.</span><br/>';
-        } elseif (!($_FILES["picture"]['type'] == 'image/jpeg' || $_FILES["picture"]['type'] == 'image/png'))
-        {
-            echo '<span class="alert-warning">Seul les formats JPEG et PNG sont acceptés, trouvez une autre image</span>';
-        } else
-            {
-            if ($_FILES["picture"]['type'] == 'image/jpeg')
-            {
-                $chemin = "img/articles/" . $_FILES['picture']['name'];
-                $fileName = basename($_FILES['picture']['name'], ".jpg");
-                $destination = 'img/articles/' . 'articles' . $indice . '.jpg';
-            } else
-                {
-                $chemin = "img/articles/" . $_FILES['picture']['name'];
-                $fileName = basename($_FILES['picture']['name'], ".png");
-                $destination = 'img/articles/' . 'articles' . $indice . ".png";
-                }
-            move_uploaded_file($_FILES['picture']['tmp_name'], 'img/articles/' . $_FILES['picture']['name']);
-            rename($fileName, 'articles' . $indice);
-            rename('img/articles/' . $_FILES['picture']['name'], $destination);
-            $indice++;
-
-            $pseudo = $_SESSION['pseudo'];
-            $title = $_POST['title'];
-            $content = $_POST['content'];
-            $request = $bdd->prepare('INSERT INTO article (pseudo,title,content,picture) VALUES(:pseudo,:title,:content,:picture)');
-            $request->execute(array(
-                'pseudo' => $pseudo,
-                'title' => $title,
-                'content' => $content,
-                'picture' => $destination
-            ));
-            $request->closeCursor();
-            echo '<span class="alert-info">Article bien enregistré.</span>';
-        }
-    }
-}
 
 

@@ -56,4 +56,10 @@ textarea
     font-size:10px;
     text-align: center;
 }
+.bouton
+{
+    background: none;
+    border-style: none;
+    text-decoration: underline;
+}
 
