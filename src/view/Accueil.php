@@ -38,6 +38,28 @@ while($data=$reqArticle->fetchObject())
 {
     array_push($tab_article,$data);
 }
+
+if(isset($_POST['message']))
+{
+    $message=htmlspecialchars(trim($_POST['message']));
+    $sqlInsChat='INSERT INTO chat (message,member_list_idmembre) VALUES (:message,:idmembre)';
+    $reqInsChat=$bdd->prepare($sqlInsChat);
+    $reqInsChat->bindParam(':message',$message);
+    $reqInsChat->bindParam(':idmembre',$_SESSION['iduser']);
+    $reqInsChat->execute();
+}
+$sqlSelChat='SELECT *,
+             DATE_FORMAT(date_message,\'%d/%m/%Y à %Hh %imin %ss\') AS date_m 
+             FROM chat
+             INNER JOIN member_list ON member_list_idmembre=idmembre
+             ORDER BY date_message DESC LIMIT 0,10';
+$reqSelChat=$bdd->prepare($sqlSelChat);
+$reqSelChat->execute();
+$tab_chat=array();
+while($data=$reqSelChat->fetchObject())
+{
+    array_push($tab_chat,$data);
+}
 ?>
 
     <h1 class="col-sm-12"> Accueil</h1>
@@ -52,10 +74,10 @@ while($data=$reqArticle->fetchObject())
                     <?php foreach ($tab_1erarticle as $article1er)
                         { ?>
                     <div class="carousel-item active">
-                        <img class="d-block img-thumbnail" src="../../assets/img/articles/articles<?= $article1er->ID ?><?= $article1er->suffix ?>" alt="..">
+                        <img class="d-block img-thumbnail" src="../../assets/img/articles/articles<?= $article1er->idarticle ?><?= $article1er->suffix ?>" alt="..">
                         <div id="article_description">
                             <form method="get" action="article.php">
-                                <input type="number" name="id" value="<?= $article1er->ID ?>" class="d-none">
+                                <input type="number" name="id" value="<?= $article1er->idarticle ?>" class="d-none">
                                 <button type="submit" class="bouton text-light"><?= $article1er->title ?></button>
                             </form>
                         </div>
@@ -64,10 +86,10 @@ while($data=$reqArticle->fetchObject())
                    foreach ($tab_article as $article)
                     { ?>
                         <div class="carousel-item">
-                            <img class="d-block img-thumbnail" src="../../assets/img/articles/articles<?= $article->ID ?><?= $article->suffix ?>" alt="..">
+                            <img class="d-block img-thumbnail" src="../../assets/img/articles/articles<?= $article->idarticle ?><?= $article->suffix ?>" alt="..">
                             <div id="article_description">
                                 <form method="get" action="article.php">
-                                    <input type="number" name="id" value="<?= $article->ID ?>" class="d-none">
+                                    <input type="number" name="id" value="<?= $article->idarticle ?>" class="d-none">
                                     <button type="submit" class="bouton text-light"><?= $article->title ?></button>
                                 </form>
                             </div>
@@ -91,17 +113,22 @@ while($data=$reqArticle->fetchObject())
 
 
     <div id="chat" class="d_none col-lg-5 bg-light-gray">
-        <form id="formChat">
-            <input type="text" placeholder="Ecrivez votre message ici" class="form-control-sm bg-light my-2 mb-2" id="msg"/>
-            <button type="submit" value="Envoyer" name="envoi" class="btn-danger btn-sm ">Envoyer</button>
-        </form>
+        <div class="">
+            <form id="formChat" method="post" action="Accueil.php" class="w-75">
+                <input type="text" name="message" placeholder="Ecrivez votre message ici" class="form-control-sm bg-light my-2 mb-2" id="msg"/>
+                <button type="submit" value="Envoyer" name="envoi" class="btn-danger btn-sm ">Envoyer</button>
+                <button type="button" class="btn-sm btn-success" id="refresh">Rafraîchir</button>
+            </form>
+        </div>
         <div id="zoneChat">
-            <p class="bg-dark msgChat"> @Audrey le 16/02/20 à 10h30<br/>Bla BLZA VKSEDJFSOJFOSHJOHSF JPEJ PJEF J EPI J£J ZO£J F£J£ FJ </p>
-            <p class="bg-dark msgChat"> @juzja le 16/02/20 à 10h10<br/> kjzzd hg HZUYdih iizi$ dzhdzeig ii uizh odzo jdzohd </p>
-            <p class="bg-dark msgChat">@JAYGL le 16/02/20 à 10h03<br/> lzidzhgi ohzd ihdjzhd hdzighdg hi zdh iz hpih zphd hpozh dp</p>
+            <?php foreach ($tab_chat as $message)
+                { ?>
+                    <p class="bg-dark msgChat"><span class="font-weight-bold"><?= $message->pseudo ?></span> le <?= $message->date_m ?><br/><?= $message->message ?></p>
+            <?php } ?>
         </div>
     </div>
-<!--    <script type="text/javascript" src="../../assets/js/diapo_article.js"></script>-->
+
 <?php
 footer();
 ?>
+<script>$('#refresh').on('click',function (){document.location.href='Accueil.php'})</script>

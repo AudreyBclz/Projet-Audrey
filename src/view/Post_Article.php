@@ -30,9 +30,9 @@ $bdd=dbconnect();
             $pseudo = $_SESSION['pseudo'];
             $title = $_POST['title'];
             $content = $_POST['content'];
-            $request = $bdd->prepare('INSERT INTO article (pseudo,title,content,suffix) VALUES(:pseudo,:title,:content,:suffix)');
+            $request = $bdd->prepare('INSERT INTO article (member_list_idmembre,date_creation,title,content,suffix) VALUES(:id_pseudo,NOW(),:title,:content,:suffix)');
             $request->execute(array(
-                'pseudo' => $pseudo,
+                'id_pseudo' => $_SESSION['iduser'],
                 'title' => $title,
                 'content' => $content,
                 'suffix'=>$suffix
@@ -43,6 +43,27 @@ $bdd=dbconnect();
             echo '<span class="alert-info">Article bien enregistré.</span>';
         }
     }
+if(isset($_POST['message']))
+{
+    $message=htmlspecialchars(trim($_POST['message']));
+    $sqlInsChat='INSERT INTO chat (message,member_list_idmembre) VALUES (:message,:idmembre)';
+    $reqInsChat=$bdd->prepare($sqlInsChat);
+    $reqInsChat->bindParam(':message',$message);
+    $reqInsChat->bindParam(':idmembre',$_SESSION['iduser']);
+    $reqInsChat->execute();
+}
+$sqlSelChat='SELECT *,
+             DATE_FORMAT(date_message,\'%d/%m/%Y à %Hh %imin %ss\') AS date_m 
+             FROM chat
+             INNER JOIN member_list ON member_list_idmembre=idmembre
+             ORDER BY date_message DESC LIMIT 0,10';
+$reqSelChat=$bdd->prepare($sqlSelChat);
+$reqSelChat->execute();
+$tab_chat=array();
+while($data=$reqSelChat->fetchObject())
+{
+    array_push($tab_chat,$data);
+}
 ?>
 
     <h1>Poster un article</h1>
@@ -63,18 +84,23 @@ $bdd=dbconnect();
             </form>
         </div>
         <div id="chat" class="d_none col-lg-5 bg-light-gray">
-            <form id="formChat" method="post" action="Post_Article.php">
-                <input type="text" placeholder="Ecrivez votre message ici" class="form-control-sm bg-light my-2 mb-2" id="msg"/>
-                <input type="submit" value="Envoyer" name="envoi" class="btn-danger btn-sm "/>
-            </form>
+            <div class="">
+                <form id="formChat" method="post" action="Accueil.php" class="w-75">
+                    <input type="text" name="message" placeholder="Ecrivez votre message ici" class="form-control-sm bg-light my-2 mb-2" id="msg"/>
+                    <button type="submit" value="Envoyer" name="envoi" class="btn-danger btn-sm ">Envoyer</button>
+                    <button type="button" class="btn-sm btn-success" id="refresh">Rafraîchir</button>
+                </form>
+            </div>
             <div id="zoneChat">
-                <p class="bg-dark msgChat"> @Audrey le 16/02/20 à 10h30<br/>Bla BLZA VKSEDJFSOJFOSHJOHSF JPEJ PJEF J EPI J£J ZO£J F£J£ FJ </p>
-                <p class="bg-dark msgChat"> @juzja le 16/02/20 à 10h10<br/> kjzzd hg HZUYdih iizi$ dzhdzeig ii uizh odzo jdzohd </p>
-                <p class="bg-dark msgChat">@JAYGL le 16/02/20 à 10h03<br/> lzidzhgi ohzd ihdjzhd hdzighdg hi zdh iz hpih zphd hpozh dp</p>
+                <?php foreach ($tab_chat as $message)
+                { ?>
+                    <p class="bg-dark msgChat"><span class="font-weight-bold"><?= $message->pseudo ?></span> le <?= $message->date_m ?><br/><?= $message->message ?></p>
+                <?php } ?>
             </div>
         </div>
-    </main>
+
 
  <?php
 footer();
 ?>
+        <script>$('#refresh').on('click',function (){document.location.href='Post_Article.php'})</script>
