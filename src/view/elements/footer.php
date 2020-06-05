@@ -11,6 +11,15 @@ function footer()
     <script type="text/javascript" src="../../assets/js/Bootstrap/bootstrap.js"></script>
     <script type="text/javascript" src="../../assets/js/controlProno.js"></script>
     <script type="text/javascript" src="../../assets/js/controle_form.js"></script>
+    <script>
+        var url=location.href;
+        url=url.split("/");
+        url=url[url.length-1];
+        url=url.split('.');
+        url=url[0];
+        $("li").removeClass("active");
+        $("#"+url).addClass("active");
+    </script>
     </body>
     </html>
     <?php

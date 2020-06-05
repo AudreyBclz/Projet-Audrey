@@ -38,15 +38,7 @@ else
         </div>
     </nav>
    <!--<script src="../../assets/js/jquery-3.4.1.js"></script>-->
-    <script>
-        var url=location.href;
-        url=url.split("/");
-        url=url[url.length-1];
-        url=url.split('.');
-        url=url[0];
-        $("li").removeClass("active");
-        $("#"+url).addClass("active");
-    </script>
+
 <?php
 }
 ?>

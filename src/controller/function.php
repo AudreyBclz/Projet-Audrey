@@ -47,7 +47,7 @@ function inscription()
             $pseudo = strip_tags(trim(($_POST['pseudo'])));
             $mdp = strip_tags(trim(password_hash($_POST['pass'], PASSWORD_DEFAULT)));
             $email = $_POST['mail'];
-            $request = $bdd->prepare('INSERT INTO member_list(pseudo,mail,password)VALUES(:pseudo,:mail,:password)');
+            $request = $bdd->prepare('INSERT INTO member_list(date_register,pseudo,mail,password)VALUES(NOW(),:pseudo,:mail,:password)');
             $request->execute(array(
                 'pseudo' => $pseudo,
                 'mail' => $email,
@@ -63,7 +63,7 @@ function connect()
 {
     $bdd=dbconnect();
     $connected = false;
-    $reponse = $bdd->query('SELECT pseudo,password,balance FROM member_list');
+    $reponse = $bdd->query('SELECT idmembre,pseudo,password,balance FROM member_list');
     if (isset($_POST['pseudo_co']) AND isset($_POST['password_co']))
     {
         while ($donnees = $reponse->fetch())
@@ -73,6 +73,7 @@ function connect()
                 $connected = true;
                 session_start();
                 $_SESSION['pseudo']=$donnees['pseudo'];
+                $_SESSION['iduser']=$donnees['idmembre'];
                 $_SESSION['balance']=$donnees['balance'];
                 header('Location: Accueil.php');
             }
@@ -90,12 +91,12 @@ function prono_record()
     $balance_remain=0;
     $exist=true;
     $bdd=dbconnect();
-    $request=$bdd->prepare('SELECT pseudo FROM prono_user WHERE pseudo=:pseudo');
+    $request=$bdd->prepare('SELECT member_list_idmembre FROM prono WHERE member_list_idmembre=:id');
     $request->execute(array(
-        'pseudo'=>$_SESSION['pseudo']
+        'id'=>$_SESSION['iduser']
     ));
     $result=$request->fetch();
-    if ($_SESSION['pseudo']==$result['pseudo'])
+    if ($_SESSION['iduser']==$result['member_list_idmembre'])
     {
         echo'<span class="alert-warning">Vous avez déjà parier pour cette session</span>';
     }
@@ -129,10 +130,10 @@ function prono_record()
             {
                 $balance_remain=$result['balance']-$sumMount;
                 $request->closeCursor();
-                $request=$bdd->prepare('INSERT INTO prono_user(pseudo,match1,mount1,match2,mount2,match3,mount3,match4,mount4,match5,mount5,match6,mount6,match7,mount7,match8,mount8,match9,mount9,match10,mount10)
+                $request=$bdd->prepare('INSERT INTO prono(member_list_idmembre,match1,mount1,match2,mount2,match3,mount3,match4,mount4,match5,mount5,match6,mount6,match7,mount7,match8,mount8,match9,mount9,match10,mount10)
         VALUES(:pseudo,:match1,:mount1,:match2,:mount2,:match3,:mount3,:match4,:mount4,:match5,:mount5,:match6,:mount6,:match7,:mount7,:match8,:mount8,:match9,:mount9,:match10,:mount10)');
                 $request->execute(array(
-                    'pseudo'=>$_SESSION['pseudo'],
+                    'pseudo'=>$_SESSION['iduser'],
                     'match1'=>$_POST['match1'],
                     'mount1'=>$_POST['mount1'],
                     'match2'=>$_POST['match2'],

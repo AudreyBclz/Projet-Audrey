@@ -7,7 +7,8 @@ head();
 $bdd=dbconnect();
 connect();
 $sql1erArticle='SELECT * FROM article
-             LIMIT 0,1';
+                WHERE verified=1
+                LIMIT 0,1';
 $req1erArticle=$bdd->prepare($sql1erArticle);
 $req1erArticle->execute();
 $tab_1erarticle=array();
@@ -15,7 +16,8 @@ while($data=$req1erArticle->fetchObject())
 {
     array_push($tab_1erarticle,$data);
 }
-$sqlCompteArt='SELECT COUNT(*) as nbArt FROM article';
+$sqlCompteArt='SELECT COUNT(*) as nbArt FROM article
+               WHERE verified=1';
 $reqCompteArt=$bdd->prepare($sqlCompteArt);
 $reqCompteArt->execute();
 $tab_compte=array();
@@ -26,6 +28,7 @@ while($data=$reqCompteArt->fetchObject())
 $nbArticle=intval($tab_compte[0]->nbArt);
 
 $sqlArticle='SELECT * FROM article
+             WHERE verified=1
              LIMIT 1,'.$nbArticle;
 $reqArticle=$bdd->prepare($sqlArticle);
 $reqArticle->execute();
@@ -66,7 +69,7 @@ while($data=$reqArticle->fetchObject())
                         <?php foreach ($tab_1erarticle as $article1er)
                         { ?>
                             <div class="carousel-item active">
-                                <img class="d-block img-thumbnail" src="assets/img/articles/articles<?= $article1er->ID ?><?= $article1er->suffix ?>" alt="..">
+                                <img class="d-block img-thumbnail" src="assets/img/articles/articles<?= $article1er->idarticle ?><?= $article1er->suffix ?>" alt="..">
                                 <div id="article_description">
                                     <span><?= $article1er->title ?></span>
                                 </div>
@@ -75,7 +78,7 @@ while($data=$reqArticle->fetchObject())
                         foreach ($tab_article as $article)
                         { ?>
                             <div class="carousel-item">
-                                <img class="d-block img-thumbnail" src="assets/img/articles/articles<?= $article->ID ?><?= $article->suffix ?>" alt="..">
+                                <img class="d-block img-thumbnail" src="assets/img/articles/articles<?= $article->idarticle ?><?= $article->suffix ?>" alt="..">
                                 <div id="article_description">
                                     <span><?= $article->title ?></span>
                                 </div>
