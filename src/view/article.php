@@ -8,7 +8,9 @@ include 'elements/nav.php';
 
 $bdd=dbconnect();
 
-$sqlSelArticle='SELECT * FROM article WHERE ID=:id_a';
+$sqlSelArticle='SELECT * FROM article
+                INNER JOIN member_list ON member_list_idmembre=idmembre 
+                WHERE idarticle=:id_a';
 $reqSelArticle=$bdd->prepare($sqlSelArticle);
 $reqSelArticle->bindParam(':id_a',$_GET['id']);
 $reqSelArticle->execute();
@@ -23,11 +25,11 @@ while($data=$reqSelArticle->fetchObject())
 </header>
 <main class="d-flex flex-column justify-content-center align-items-center">
     <div id="article">
-        <img src="../../assets/img/articles/articles<?= $tab_article[0]->ID ?>" class="img-fluid img-thumbnail" alt=""/>
+        <img src="../../assets/img/articles/articles<?= $tab_article[0]->idarticle ?>" class="img-fluid img-thumbnail" alt=""/>
     </div>
     <div id="contenu_article" class="mt-5">
         <p><?= $tab_article[0]->content ?></p>
-        <p>Ecrit par :<span class="font-weight-bold"><?= $tab_article[0]->pseudo ?></span></p>
+        <p>Ecrit par : <span class="font-weight-bold"><?= $tab_article[0]->pseudo ?></span></p>
     </div>
 
 <?php
