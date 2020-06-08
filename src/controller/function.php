@@ -87,84 +87,77 @@ function connect()
 
 function prono_record()
 {
-    $sumMount=0;
-    $balance_remain=0;
-    $exist=true;
-    $bdd=dbconnect();
-    $request=$bdd->prepare('SELECT member_list_idmembre FROM prono WHERE member_list_idmembre=:id');
-    $request->execute(array(
-        'id'=>$_SESSION['iduser']
-    ));
-    $result=$request->fetch();
-    if ($_SESSION['iduser']==$result['member_list_idmembre'])
-    {
-        echo'<span class="alert-warning">Vous avez déjà parier pour cette session</span>';
-    }
-
-    else
-    {
-        for ($i=1;$i<=10;$i++)
-        {
-            if(!(isset($_POST['match'.$i])))
-            {
-                $exist=false;
+    if (isset($_POST['journee'])) {
+        $sumMount = 0;
+        $balance_remain = 0;
+        $exist = true;
+        $bdd = dbconnect();
+        $request = $bdd->prepare('SELECT member_list_idmembre FROM prono WHERE member_list_idmembre=:id AND journeeProno=:jour');
+        $request->execute(array(
+            'id' => $_SESSION['iduser'],
+            'jour' => $_POST['journee']
+        ));
+        $result = $request->fetch();
+        if ($_SESSION['iduser'] == $result['member_list_idmembre']) {
+            echo '<span class="alert-warning">Vous avez déjà parier pour cette session</span>';
+        } else {
+            for ($i = 1; $i <= 10; $i++) {
+                if (!(isset($_POST['match' . $i]))) {
+                    $exist = false;
+                }
             }
-        }
-        if($exist)
-        {
-            $request->closeCursor();
-            $request=$bdd->prepare('SELECT balance FROM member_list WHERE pseudo=:pseudo');
-            $request->execute(array(
-                'pseudo'=>$_SESSION['pseudo']
-            ));
-            $result=$request->fetch();
-            for($i=1;$i<=10;$i++)
-            {
-                $sumMount=$sumMount+$_POST['mount'.$i];
-            }
-            if($sumMount>$result['balance'])
-            {
-                echo'<span class="alert-warning">Le montant parié est supérieur à vos crédits. Veuillez recommencer</span>';
-            }
-            else
-            {
-                $balance_remain=$result['balance']-$sumMount;
+            if ($exist) {
                 $request->closeCursor();
-                $request=$bdd->prepare('INSERT INTO prono(member_list_idmembre,match1,mount1,match2,mount2,match3,mount3,match4,mount4,match5,mount5,match6,mount6,match7,mount7,match8,mount8,match9,mount9,match10,mount10)
-        VALUES(:pseudo,:match1,:mount1,:match2,:mount2,:match3,:mount3,:match4,:mount4,:match5,:mount5,:match6,:mount6,:match7,:mount7,:match8,:mount8,:match9,:mount9,:match10,:mount10)');
+                $request = $bdd->prepare('SELECT balance FROM member_list WHERE pseudo=:pseudo');
                 $request->execute(array(
-                    'pseudo'=>$_SESSION['iduser'],
-                    'match1'=>$_POST['match1'],
-                    'mount1'=>$_POST['mount1'],
-                    'match2'=>$_POST['match2'],
-                    'mount2'=>$_POST['mount2'],
-                    'match3'=>$_POST['match3'],
-                    'mount3'=>$_POST['mount3'],
-                    'match4'=>$_POST['match4'],
-                    'mount4'=>$_POST['mount4'],
-                    'match5'=>$_POST['match5'],
-                    'mount5'=>$_POST['mount5'],
-                    'match6'=>$_POST['match6'],
-                    'mount6'=>$_POST['mount6'],
-                    'match7'=>$_POST['match7'],
-                    'mount7'=>$_POST['mount7'],
-                    'match8'=>$_POST['match8'],
-                    'mount8'=>$_POST['mount8'],
-                    'match9'=>$_POST['match9'],
-                    'mount9'=>$_POST['mount9'],
-                    'match10'=>$_POST['match10'],
-                    'mount10'=>$_POST['mount10']
+                    'pseudo' => $_SESSION['pseudo']
                 ));
-                $request->closeCursor();
-                $request=$bdd->prepare('UPDATE member_list SET balance= :balance WHERE pseudo= :pseudo');
-                $request->execute(array(
-                    'balance'=>$balance_remain,
-                    'pseudo'=>$_SESSION['pseudo']
-                ));
-                $_SESSION['balance']=$balance_remain;
-                echo'<span class="alert-info">Votre pronostic a bien été enregistré</span>';
-            }
+                $result = $request->fetch();
+                for ($i = 1; $i <= 10; $i++) {
+                    $sumMount = $sumMount + $_POST['mount' . $i];
+                }
+                if ($sumMount > $result['balance']) {
+                    echo '<span class="alert-warning">Le montant parié est supérieur à vos crédits. Veuillez recommencer</span>';
+                } else {
+                    $balance_remain = $result['balance'] - $sumMount;
+                    $request->closeCursor();
+                    $request = $bdd->prepare('INSERT INTO prono(member_list_idmembre,journeeProno,match1,mount1,match2,mount2,match3,mount3,match4,mount4,match5,mount5,match6,mount6,match7,mount7,match8,mount8,match9,mount9,match10,mount10)
+            VALUES(:pseudo,:jour,:match1,:mount1,:match2,:mount2,:match3,:mount3,:match4,:mount4,:match5,:mount5,:match6,:mount6,:match7,:mount7,:match8,:mount8,:match9,:mount9,:match10,:mount10)');
+                    $request->execute(array(
+                        'pseudo' => $_SESSION['iduser'],
+                        'jour' => $_POST['journee'],
+                        'match1' => $_POST['match1'],
+                        'mount1' => $_POST['mount1'],
+                        'match2' => $_POST['match2'],
+                        'mount2' => $_POST['mount2'],
+                        'match3' => $_POST['match3'],
+                        'mount3' => $_POST['mount3'],
+                        'match4' => $_POST['match4'],
+                        'mount4' => $_POST['mount4'],
+                        'match5' => $_POST['match5'],
+                        'mount5' => $_POST['mount5'],
+                        'match6' => $_POST['match6'],
+                        'mount6' => $_POST['mount6'],
+                        'match7' => $_POST['match7'],
+                        'mount7' => $_POST['mount7'],
+                        'match8' => $_POST['match8'],
+                        'mount8' => $_POST['mount8'],
+                        'match9' => $_POST['match9'],
+                        'mount9' => $_POST['mount9'],
+                        'match10' => $_POST['match10'],
+                        'mount10' => $_POST['mount10']
+                    ));
+                    $request->closeCursor();
+                    $request = $bdd->prepare('UPDATE member_list SET balance= :balance WHERE idmembre= :id');
+                    $request->execute(array(
+                        'balance' => $balance_remain,
+                        'id' => $_SESSION['iduser']
+                    ));
+                    $_SESSION['balance'] = $balance_remain;
+                    echo '<span class="alert-info">Votre pronostic a bien été enregistré</span>';
+                }
 
+            }
         }
     }
 

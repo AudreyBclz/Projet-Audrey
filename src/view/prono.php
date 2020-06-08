@@ -14,6 +14,46 @@ include('elements/nav.php');?>
     <div id="prono-cote">
         <form class="col-lg-5 prono-pc" id="formulaire" method="post" action="prono.php">
             <div>
+                <select name="journee" class="form-control mb-3 w-25">
+                    <option value="1">J1</option>
+                    <option value="2">J2</option>
+                    <option value="3">J3</option>
+                    <option value="4">J4</option>
+                    <option value="5">J5</option>
+                    <option value="6">J6</option>
+                    <option value="7">J7</option>
+                    <option value="8">J8</option>
+                    <option value="9">J9</option>
+                    <option value="10">J10</option>
+                    <option value="11">J11</option>
+                    <option value="12">J12</option>
+                    <option value="13">J13</option>
+                    <option value="14">J14</option>
+                    <option value="15">J15</option>
+                    <option value="16">J16</option>
+                    <option value="17">J17</option>
+                    <option value="18">J18</option>
+                    <option value="19">J19</option>
+                    <option value="20">J20</option>
+                    <option value="21">J21</option>
+                    <option value="22">J22</option>
+                    <option value="23">J23</option>
+                    <option value="24">J24</option>
+                    <option value="25">J25</option>
+                    <option value="26">J26</option>
+                    <option value="27">J27</option>
+                    <option value="28">J28</option>
+                    <option value="29">J29</option>
+                    <option value="30">J30</option>
+                    <option value="31">J31</option>
+                    <option value="32">J32</option>
+                    <option value="33">J33</option>
+                    <option value="34">J34</option>
+                    <option value="35">J35</option>
+                    <option value="36">J36</option>
+                    <option value="37">J37</option>
+                    <option value="38">J38</option>
+                </select>
                 <fieldset class="bg-dark pad-0">
                     <div class="form-group bg-dark">
                         <legend class="text-center">Match 1</legend>
