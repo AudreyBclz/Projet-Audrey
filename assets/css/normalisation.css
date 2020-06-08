@@ -62,4 +62,12 @@ textarea
     border-style: none;
     text-decoration: underline;
 }
+.chat
+{
+    border-radius: 3px;
+}
+.bg-light-gray
+{
+    background-color: lightslategrey;
+}
 
