@@ -115,7 +115,7 @@ while($data=$reqSelChat->fetchObject())
     <div id="chat" class="d_none col-lg-5 bg-light-gray">
         <div class="">
             <form id="formChat" method="post" action="Accueil.php" class="w-75">
-                <input type="text" name="message" placeholder="Ecrivez votre message ici" class="form-control-sm bg-light my-2 mb-2" id="msg"/>
+                <input type="text" name="message" placeholder="Ecrivez votre message ici" class="form-control-sm bg-light my-2 mb-2" id="msg" required/>
                 <button type="submit" value="Envoyer" name="envoi" class="btn-danger btn-sm ">Envoyer</button>
                 <button type="button" class="btn-sm btn-success" id="refresh">Rafraîchir</button>
             </form>
