@@ -28,8 +28,8 @@ $bdd=dbconnect();
             move_uploaded_file($_FILES['picture']['tmp_name'], '../../assets/img/articles/' . $_FILES['picture']['name']);
 
             $pseudo = $_SESSION['pseudo'];
-            $title = $_POST['title'];
-            $content = $_POST['content'];
+            $title = htmlspecialchars(trim($_POST['title']));
+            $content = htmlspecialchars(trim($_POST['content']));
             $request = $bdd->prepare('INSERT INTO article (member_list_idmembre,date_creation,title,content,suffix) VALUES(:id_pseudo,NOW(),:title,:content,:suffix)');
             $request->execute(array(
                 'id_pseudo' => $_SESSION['iduser'],
@@ -85,8 +85,8 @@ while($data=$reqSelChat->fetchObject())
         </div>
         <div id="chat" class="d_none col-lg-5 bg-light-gray">
             <div class="">
-                <form id="formChat" method="post" action="Accueil.php" class="w-75">
-                    <input type="text" name="message" placeholder="Ecrivez votre message ici" class="form-control-sm bg-light my-2 mb-2" id="msg"/>
+                <form id="formChat" method="post" action="Post_Article.php" class="w-75">
+                    <input type="text" name="message" placeholder="Ecrivez votre message ici" class="form-control-sm bg-light my-2 mb-2" id="msg" required/>
                     <button type="submit" value="Envoyer" name="envoi" class="btn-danger btn-sm ">Envoyer</button>
                     <button type="button" class="btn-sm btn-success" id="refresh">Rafraîchir</button>
                 </form>

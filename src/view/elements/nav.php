@@ -26,7 +26,7 @@ else
                     <a class="nav-link" href="../view/Post_Article.php" id="Post_Article">Poster un article</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="../view/chat.html" id="chat">Chat</a>
+                    <a class="nav-link" href="../view/chat.php" id="chat">Chat</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="../view/prono.php" id="prono">Pronostic de la semaine</a>
