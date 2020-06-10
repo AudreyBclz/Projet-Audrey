@@ -162,6 +162,22 @@ function prono_record()
     }
 
 }
+function aff_prono($valeur)
+{
+    if (!empty($tab_prono))
+    {
+        echo $valeur;
+    }
+}
+function aff_SelProno($resultat,$valeur,$attribut)
+{
+        if ($resultat == $valeur)
+        {
+            echo $attribut.'= "'.$attribut.'"';
+        }
+}
+
+
 
 
 

@@ -60,7 +60,7 @@ require_once 'elements/nav.php';
                 <button type="submit" value="Envoyer" name="envoi" class="btn-danger btn-sm ">Envoyer</button>
                 <button type="button" class="btn-sm btn-success" id="refresh">Rafraîchir</button>
             </form>
-        <div id="zoneChat">
+        <div id="zoneChat" class="mt-2">
             <?php foreach ($tab_chat as $message)
                 { ?>
             <p class="bg-dark msgChat"><span class="font-weight-bold"><?= $message->pseudo ?></span> le <?= $message->date_m ?><br/><?= $message->message ?></p>

@@ -1,6 +1,6 @@
 function controlProno()
 {
-    var decimal_test=/^[0-9]+\.?[0-9]*$/;
+    var decimal_test=/^[0-9]+\.?[0-9]{0,2}$/;
     var goodType=true,
         missValue=false;
 

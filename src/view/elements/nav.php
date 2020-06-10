@@ -31,6 +31,9 @@ else
                 <li class="nav-item">
                     <a class="nav-link" href="../view/prono.php" id="prono">Pronostic de la semaine</a>
                 </li>
+                <li class="nav-item display_none">
+                    <a class="nav-link" href="../view/cote.php" id="cote">Cote</a>
+                </li>
                 <li class="nav-item">
                      <a class="nav-link" href="../view/deconnexion.php" id="deconnexion.">Déconnexion</a>
                 </li>
